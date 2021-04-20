@@ -8,10 +8,17 @@
 import Foundation
 
 struct Friend: Codable {
-    let id: String?
+    let _id: String?
     let firstName: String?
     let lastName: String?
 }
 
 typealias Friends = [Friend]
 
+struct Message: Codable {
+    let message: String?
+    let to: String?
+    let from: String?
+}
+
+typealias Messages = [Message]

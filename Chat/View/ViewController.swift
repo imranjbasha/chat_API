@@ -43,5 +43,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.friendName.text = "\(friend.firstName ?? "") \(friend.lastName ?? "")"
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userId = friendsList[indexPath.item]._id
+        let chatVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
+        chatVC.userId = userId
+        self.navigationController?.pushViewController(chatVC, animated: false)
+    }
 }
 
