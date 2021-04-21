@@ -10,8 +10,19 @@ import UIKit
 
 extension UILabel {
     
-    func setRoundedCorner(){
+    public func setRoundedCorner(){
         self.layer.cornerRadius = 10.0
         self.layer.masksToBounds = true
     }
+}
+
+extension UIImageView {
+        public func maskCircle(image: UIImage) {
+           self.contentMode = UIView.ContentMode.scaleAspectFill
+           self.layer.cornerRadius = self.frame.height / 2
+           self.layer.masksToBounds = false
+           self.clipsToBounds = true
+           self.image = image
+         }
+
 }
