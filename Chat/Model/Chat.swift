@@ -11,6 +11,7 @@ struct Friend: Codable {
     let _id: String?
     let firstName: String?
     let lastName: String?
+    let avatar: String?
 }
 
 typealias Friends = [Friend]

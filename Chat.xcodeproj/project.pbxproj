@@ -23,6 +23,7 @@
 		035F5EC2262EDB9000BD280F /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F5EC1262EDB9000BD280F /* ChatVC.swift */; };
 		035F5ECE262EEDD600BD280F /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F5ECD262EEDD600BD280F /* MessagesViewModel.swift */; };
 		035F5ED4262EFAF600BD280F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F5ED3262EFAF500BD280F /* Extensions.swift */; };
+		0397F54C2631AC8000E90021 /* AssetsName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0397F54B2631AC7F00E90021 /* AssetsName.swift */; };
 		32444C3C52B873F0D5D2F636 /* Pods_Chat_ChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80981EA740D95D6DFFB1711B /* Pods_Chat_ChatUITests.framework */; };
 		ECFA4DCD5FDF3209921329D3 /* Pods_ChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB13B67ABB16E77C02CB8F32 /* Pods_ChatTests.framework */; };
 		F5D79E02F2D82D7EF90F03F4 /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167BF7AD72F5B9E506EAEB89 /* Pods_Chat.framework */; };
@@ -68,6 +69,7 @@
 		035F5EC1262EDB9000BD280F /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		035F5ECD262EEDD600BD280F /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		035F5ED3262EFAF500BD280F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0397F54B2631AC7F00E90021 /* AssetsName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsName.swift; sourceTree = "<group>"; };
 		167BF7AD72F5B9E506EAEB89 /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18124CDD18F0A002CCE0FA74 /* Pods-ChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatTests.debug.xcconfig"; path = "Target Support Files/Pods-ChatTests/Pods-ChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44AF03DEF700C0F23F1BD945 /* Pods-Chat-ChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat-ChatUITests.release.xcconfig"; path = "Target Support Files/Pods-Chat-ChatUITests/Pods-Chat-ChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				035F5841262D5D7A00BD280F /* Assets.xcassets */,
+				0397F54B2631AC7F00E90021 /* AssetsName.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				035F588B262D651D00BD280F /* Chat.swift in Sources */,
 				035F5ED4262EFAF600BD280F /* Extensions.swift in Sources */,
 				035F5886262D631000BD280F /* FriendListCell.swift in Sources */,
+				0397F54C2631AC8000E90021 /* AssetsName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

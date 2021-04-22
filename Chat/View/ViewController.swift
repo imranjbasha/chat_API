@@ -40,12 +40,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendListCell", for: indexPath) as! FriendListCell
         let friend = friendsList[indexPath.item]
-        let url = URL(string:"https://praja-uploads.s3.amazonaws.com/lee.jpg")
-        if let data = try? Data(contentsOf: url!)
-            {
-              let image: UIImage = UIImage(data: data)!
-              cell.ivFriendProfile.maskCircle(image: image)
-            }
+        var image = UIImage(named: AssetsName.default_profile)
+        if let imageUrlString = friend.avatar, let url = URL(string: imageUrlString), let data = try? Data(contentsOf: url) {
+              image = UIImage(data: data)
+        }
+        cell.ivFriendProfile.maskCircle(image: image!)
         cell.friendName.text = "\(friend.firstName ?? "") \(friend.lastName ?? "")"
         return cell
     }
