@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         tvChatFriendList.delegate = self
         tvChatFriendList.dataSource = self
         updateUI()

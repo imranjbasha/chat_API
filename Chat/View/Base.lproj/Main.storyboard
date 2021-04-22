@@ -98,9 +98,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_background" translatesAutoresizingMaskIntoConstraints="NO" id="hEi-L5-rdi">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0jK-UX-YuI">
-                                <rect key="frame" x="0.0" y="100" width="414" height="712"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="200" width="414" height="612"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FriendListCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendListCell" rowHeight="142" id="6Xg-Yp-7vU" customClass="FriendListCell" customModule="Chat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="142"/>
@@ -118,12 +121,13 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaT-mQ-6EH">
                                                     <rect key="frame" x="85" y="26" width="309" height="90"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yaT-mQ-6EH" secondAttribute="bottom" constant="15" id="Cl7-OX-KGW"/>
                                                 <constraint firstAttribute="trailing" secondItem="yaT-mQ-6EH" secondAttribute="trailing" constant="20" id="FhZ-xd-E7a"/>
@@ -133,6 +137,7 @@
                                                 <constraint firstItem="yaT-mQ-6EH" firstAttribute="top" secondItem="U90-Hh-QPO" secondAttribute="topMargin" constant="15" id="yB2-K7-xyw"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="friendName" destination="yaT-mQ-6EH" id="hhc-2k-DeC"/>
                                             <outlet property="ivFriendProfile" destination="SFm-aJ-UfJ" id="H39-Eq-gV4"/>
@@ -143,10 +148,15 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="0jK-UX-YuI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="200" id="40n-Rf-gYp"/>
                             <constraint firstAttribute="bottomMargin" secondItem="0jK-UX-YuI" secondAttribute="bottom" constant="50" id="6a8-hZ-0mH"/>
-                            <constraint firstItem="0jK-UX-YuI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="12" id="VsC-HM-dS6"/>
+                            <constraint firstAttribute="bottom" secondItem="hEi-L5-rdi" secondAttribute="bottom" id="8bC-zA-AKW"/>
+                            <constraint firstItem="hEi-L5-rdi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Aid-lK-K8P"/>
+                            <constraint firstItem="hEi-L5-rdi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DFW-up-qu8"/>
                             <constraint firstAttribute="trailing" secondItem="0jK-UX-YuI" secondAttribute="trailing" id="VvI-47-cwZ"/>
+                            <constraint firstAttribute="trailing" secondItem="hEi-L5-rdi" secondAttribute="trailing" id="hq0-II-UDK"/>
                             <constraint firstItem="0jK-UX-YuI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="woc-Wy-JdJ"/>
                         </constraints>
                     </view>
@@ -167,9 +177,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GJH-qB-m9A">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.11372549019607843" green="0.17254901960784313" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.11372549019607843" green="0.17254901960784313" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -182,6 +192,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_background" width="1344" height="1008"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
