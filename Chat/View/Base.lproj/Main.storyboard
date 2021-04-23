@@ -7,6 +7,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="DarkerGrotesque-Bold.ttf">
+            <string>DarkerGrotesque-Bold</string>
+        </array>
+        <array key="DarkerGrotesque-Medium.ttf">
+            <string>DarkerGrotesque-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--ChatVC-->
         <scene sceneID="ifK-co-igh">
@@ -136,24 +144,24 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hello message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaT-mQ-6EH">
-                                                            <rect key="frame" x="0.0" y="49.5" width="209" height="23"/>
+                                                            <rect key="frame" x="0.0" y="42" width="209" height="30"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                            <fontDescription key="fontDescription" name="DarkerGrotesque-Bold" family="Darker Grotesque" pointSize="22"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLH-yE-RV1">
-                                                            <rect key="frame" x="0.0" y="77.5" width="35" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <rect key="frame" x="0.0" y="77" width="35" height="26"/>
+                                                            <fontDescription key="fontDescription" name="DarkerGrotesque-Medium" family="Darker Grotesque" pointSize="19"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yesterday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IW-JU-7tp">
-                                                            <rect key="frame" x="224" y="53" width="75" height="16"/>
+                                                            <rect key="frame" x="224" y="45.5" width="75" height="23.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="75" id="dxa-ov-g8F"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <fontDescription key="fontDescription" name="DarkerGrotesque-Medium" family="Darker Grotesque" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -168,7 +176,7 @@
                                                             <rect key="frame" x="259" y="74" width="20" height="20"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28N-ti-gPn">
-                                                                    <rect key="frame" x="7" y="3" width="6" height="14.5"/>
+                                                                    <rect key="frame" x="7" y="2.5" width="6" height="14.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -187,6 +195,7 @@
                                                     <constraints>
                                                         <constraint firstItem="1IW-JU-7tp" firstAttribute="centerY" secondItem="yaT-mQ-6EH" secondAttribute="centerY" id="2qC-gA-T3i"/>
                                                         <constraint firstItem="3oD-mv-OdK" firstAttribute="top" secondItem="1IW-JU-7tp" secondAttribute="bottom" constant="5" id="5jk-fh-a8K"/>
+                                                        <constraint firstItem="yaT-mQ-6EH" firstAttribute="top" secondItem="HUz-hn-ews" secondAttribute="bottom" constant="2.5" id="7we-Ci-ROl"/>
                                                         <constraint firstAttribute="trailing" secondItem="HUz-hn-ews" secondAttribute="trailing" id="XUJ-zX-Yda"/>
                                                         <constraint firstItem="Gwn-pv-btV" firstAttribute="trailing" secondItem="3oD-mv-OdK" secondAttribute="trailing" id="YYM-Hw-ZvK"/>
                                                         <constraint firstAttribute="trailing" secondItem="3oD-mv-OdK" secondAttribute="trailing" constant="35" id="a4Z-vL-FXp"/>
@@ -197,7 +206,6 @@
                                                         <constraint firstAttribute="trailing" secondItem="1IW-JU-7tp" secondAttribute="trailing" constant="15" id="n5g-ZJ-8Qo"/>
                                                         <constraint firstItem="1IW-JU-7tp" firstAttribute="leading" secondItem="yaT-mQ-6EH" secondAttribute="trailing" constant="15" id="oJN-bl-b5r"/>
                                                         <constraint firstAttribute="height" constant="100" id="ras-wS-LNf"/>
-                                                        <constraint firstItem="yaT-mQ-6EH" firstAttribute="top" secondItem="HUz-hn-ews" secondAttribute="bottom" constant="10" id="tjM-j7-uko"/>
                                                         <constraint firstItem="yaT-mQ-6EH" firstAttribute="leading" secondItem="iuG-CA-S0s" secondAttribute="leading" id="zPi-6U-rvc"/>
                                                     </constraints>
                                                 </view>
