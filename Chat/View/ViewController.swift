@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tvChatFriendList: UITableView!
+    @IBOutlet weak var imgbackground: UIImageView!
     
     var friendsList: [Friend] = []
     
@@ -22,6 +23,8 @@ class ViewController: UIViewController {
     }
     
     func updateUI(){
+        self.imgbackground.layer.cornerRadius = 50.0
+        self.imgbackground.layer.masksToBounds = true
         let friendsViewModel = FriendsViewModel()
         friendsViewModel.bindFriendViewModelToController = {
             self.friendsList = friendsViewModel.friendsData

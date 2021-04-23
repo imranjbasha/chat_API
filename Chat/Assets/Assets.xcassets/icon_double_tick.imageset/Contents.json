@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "MOBILE.jpg",
+      "filename" : "icons8-double-tick-90.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "MOBILE@2x.jpg",
+      "filename" : "icons8-double-tick-90@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "MOBILE@3x.jpg",
+      "filename" : "icons8-double-tick-90@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
