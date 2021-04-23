@@ -106,6 +106,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_search" translatesAutoresizingMaskIntoConstraints="NO" id="efY-oE-zH1">
+                                <rect key="frame" x="349" y="90" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="M7C-Ui-hN7"/>
+                                    <constraint firstAttribute="height" constant="30" id="jC1-1B-EH2"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ka8-P1-GpG">
+                                <rect key="frame" x="339" y="85" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="LzF-fH-ix5"/>
+                                    <constraint firstAttribute="height" constant="40" id="X2p-DX-Gy1"/>
+                                </constraints>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-cL-nTP">
                                 <rect key="frame" x="185.5" y="93" width="43" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -239,10 +253,14 @@
                         <color key="backgroundColor" red="0.11372549019607843" green="0.17254901960784313" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ka8-P1-GpG" firstAttribute="trailing" secondItem="efY-oE-zH1" secondAttribute="trailing" id="5pD-Hx-vGJ"/>
                             <constraint firstItem="0jK-UX-YuI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BwE-tL-4dO"/>
+                            <constraint firstItem="ka8-P1-GpG" firstAttribute="centerY" secondItem="efY-oE-zH1" secondAttribute="centerY" id="Jm5-fK-3z6"/>
                             <constraint firstAttribute="trailing" secondItem="0jK-UX-YuI" secondAttribute="trailing" id="KuE-oV-JlZ"/>
                             <constraint firstItem="mhb-cL-nTP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RCT-dY-NM0"/>
                             <constraint firstItem="0jK-UX-YuI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="140" id="TKY-Vo-l5B"/>
+                            <constraint firstItem="efY-oE-zH1" firstAttribute="centerY" secondItem="mhb-cL-nTP" secondAttribute="centerY" id="TpK-1G-vgs"/>
+                            <constraint firstAttribute="trailing" secondItem="efY-oE-zH1" secondAttribute="trailing" constant="35" id="Y1H-wP-6VT"/>
                             <constraint firstAttribute="bottom" secondItem="hEi-L5-rdi" secondAttribute="bottom" id="aNK-Ve-Jf4"/>
                             <constraint firstAttribute="trailing" secondItem="hEi-L5-rdi" secondAttribute="trailing" id="csZ-G1-v7C"/>
                             <constraint firstItem="mhb-cL-nTP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="5" id="iGw-38-VOv"/>
@@ -286,6 +304,7 @@
     <resources>
         <image name="icon_background" width="756" height="1008"/>
         <image name="icon_double_tick" width="30" height="30"/>
+        <image name="icon_search" width="22.5" height="22.5"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
