@@ -14,6 +14,16 @@ class FriendListCell: UITableViewCell {
     
     @IBOutlet weak var friendName: UILabel!
     
+    @IBOutlet weak var lastMessage: UILabel!
+    
+    @IBOutlet weak var timeStamp: UILabel!
+    
+    @IBOutlet weak var imgChatTick: UIImageView!
+    
+    @IBOutlet weak var badgeView: UIView!
+    
+    @IBOutlet weak var badgeCount: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

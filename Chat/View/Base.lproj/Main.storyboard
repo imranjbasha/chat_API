@@ -164,13 +164,33 @@
                                                                 <constraint firstAttribute="width" constant="20" id="ZJ8-kZ-1oE"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gwn-pv-btV">
+                                                            <rect key="frame" x="249" y="74" width="30" height="30"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28N-ti-gPn">
+                                                                    <rect key="frame" x="11.5" y="6" width="7" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.1137254902" green="0.17254901959999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="8M1-NW-kqd"/>
+                                                                <constraint firstItem="28N-ti-gPn" firstAttribute="centerX" secondItem="Gwn-pv-btV" secondAttribute="centerX" id="cbE-hd-Lwd"/>
+                                                                <constraint firstAttribute="width" constant="30" id="e5M-gY-WEI"/>
+                                                                <constraint firstItem="28N-ti-gPn" firstAttribute="centerY" secondItem="Gwn-pv-btV" secondAttribute="centerY" id="mZN-yD-Efl"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="1IW-JU-7tp" firstAttribute="centerY" secondItem="yaT-mQ-6EH" secondAttribute="centerY" id="2qC-gA-T3i"/>
                                                         <constraint firstItem="3oD-mv-OdK" firstAttribute="top" secondItem="1IW-JU-7tp" secondAttribute="bottom" constant="5" id="5jk-fh-a8K"/>
                                                         <constraint firstAttribute="trailing" secondItem="HUz-hn-ews" secondAttribute="trailing" id="XUJ-zX-Yda"/>
+                                                        <constraint firstItem="Gwn-pv-btV" firstAttribute="trailing" secondItem="3oD-mv-OdK" secondAttribute="trailing" id="YYM-Hw-ZvK"/>
                                                         <constraint firstAttribute="trailing" secondItem="3oD-mv-OdK" secondAttribute="trailing" constant="35" id="a4Z-vL-FXp"/>
+                                                        <constraint firstItem="Gwn-pv-btV" firstAttribute="top" secondItem="3oD-mv-OdK" secondAttribute="top" id="ef1-Sa-3Fc"/>
                                                         <constraint firstItem="HUz-hn-ews" firstAttribute="leading" secondItem="iuG-CA-S0s" secondAttribute="leading" id="ezJ-TI-Ere"/>
                                                         <constraint firstItem="GLH-yE-RV1" firstAttribute="leading" secondItem="iuG-CA-S0s" secondAttribute="leading" id="gRE-Yr-yY6"/>
                                                         <constraint firstItem="GLH-yE-RV1" firstAttribute="top" secondItem="yaT-mQ-6EH" secondAttribute="bottom" constant="5" id="kEa-Xt-BGe"/>
@@ -195,8 +215,13 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="badgeCount" destination="28N-ti-gPn" id="J0l-j5-5tt"/>
+                                            <outlet property="badgeView" destination="Gwn-pv-btV" id="yVu-Xa-COp"/>
                                             <outlet property="friendName" destination="yaT-mQ-6EH" id="hhc-2k-DeC"/>
+                                            <outlet property="imgChatTick" destination="3oD-mv-OdK" id="KRl-u7-d9C"/>
                                             <outlet property="ivFriendProfile" destination="SFm-aJ-UfJ" id="H39-Eq-gV4"/>
+                                            <outlet property="lastMessage" destination="GLH-yE-RV1" id="nvu-Ik-6L5"/>
+                                            <outlet property="timeStamp" destination="1IW-JU-7tp" id="Veu-2O-zKG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -251,7 +276,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_background" width="1344" height="1008"/>
+        <image name="icon_background" width="756" height="1008"/>
         <image name="icon_double_tick" width="30" height="30"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
