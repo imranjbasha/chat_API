@@ -11,6 +11,9 @@ class ChatVC: UIViewController {
     
     @IBOutlet weak var tvMessages: UITableView!
     
+    
+    @IBOutlet weak var chatInputView: UIView!
+    
     var userId : String?
     
     var messages: [Message] = []
@@ -23,6 +26,7 @@ class ChatVC: UIViewController {
     }
     
     func updateUI(){
+        chatInputView.setCornerRadius(value: 25.0)
         let messagesViewModel = MessagesViewModel(userId: userId ?? "")
         messagesViewModel.bindMessagesViewModelToController = {
             self.messages = messagesViewModel.messagesData
@@ -51,10 +55,19 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! ChatCell
-        let message = messages[indexPath.item].message
-        cell.chatMessage.text = "  \(message ?? "")  "
-        cell.chatMessage.setRoundedCorner()
-        return cell
+        let messageData = messages[indexPath.item]
+        if messageData.to == userId {
+            let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! ChatCell
+            let message = messageData.message
+            cell.chatMessage.text = "  \(message ?? "")  "
+            cell.chatMessage.setRoundedCorner()
+            return cell
+        }else{
+            let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnCell", for: indexPath) as! ChatCell
+            let message = messageData.message
+            cell.chatMessage.text = "  \(message ?? "")  "
+            cell.chatMessage.setRoundedCorner()
+            return cell
+        }
     }
 }

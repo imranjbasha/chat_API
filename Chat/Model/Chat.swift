@@ -20,6 +20,9 @@ struct Message: Codable {
     let message: String?
     let to: String?
     let from: String?
+    let timestamp: String?
+    let attachments: [String]
+    let type: String?
 }
 
 typealias Messages = [Message]
