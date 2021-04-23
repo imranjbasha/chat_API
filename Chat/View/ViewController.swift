@@ -50,6 +50,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.ivFriendProfile.maskCircle(image: image!)
         cell.friendName.text = "\(friend.firstName ?? "") \(friend.lastName ?? "")"
+        cell.imgChatTick.isHidden = true
+        cell.badgeView.isHidden = false
+        cell.badgeView.maskCircle()
         return cell
     }
     
