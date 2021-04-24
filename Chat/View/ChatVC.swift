@@ -12,6 +12,8 @@ class ChatVC: UIViewController {
     @IBOutlet weak var tvMessages: UITableView!
     
     
+    @IBOutlet weak var imgBackground: UIImageView!
+    
     @IBOutlet weak var chatInputView: UIView!
     
     var userId : String?
@@ -20,6 +22,8 @@ class ChatVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        imgBackground.setCornerRadius(value: 50.0)
         tvMessages.delegate = self
         tvMessages.dataSource = self
         updateUI()
@@ -27,6 +31,7 @@ class ChatVC: UIViewController {
     
     func updateUI(){
         chatInputView.setCornerRadius(value: 25.0)
+        chatInputView.setBorder(color: UIColor.gray, width: 1.0)
         let messagesViewModel = MessagesViewModel(userId: userId ?? "")
         messagesViewModel.bindMessagesViewModelToController = {
             self.messages = messagesViewModel.messagesData

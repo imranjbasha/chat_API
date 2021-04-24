@@ -24,7 +24,6 @@ extension UIImageView {
            self.clipsToBounds = true
            self.image = image
          }
-
 }
 
 extension UIView {
@@ -34,7 +33,6 @@ extension UIView {
            self.layer.masksToBounds = false
            self.clipsToBounds = true
          }
-
 }
 
 extension UIView {
@@ -42,6 +40,12 @@ extension UIView {
             self.layer.cornerRadius = value
             self.layer.masksToBounds = true
          }
+}
 
+extension UIView {
+    public func setBorder(color: UIColor, width: CGFloat) {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
+    }
 }
 
