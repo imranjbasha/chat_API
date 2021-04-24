@@ -20,10 +20,32 @@ class ChatVC: UIViewController {
     
     var messages: [Message] = []
     
+    @IBOutlet weak var tfChat: UITextField!
+    
+    @IBOutlet weak var chatSendBtn: UIButton!
+    
+    @IBOutlet weak var userName: UILabel!
+    
+    @IBOutlet weak var userProfilePic: UIImageView!
+    
+    @IBAction func onTappedButtons(_ sender: UIButton) {
+        
+        switch sender.tag {
+        case 1:
+            print("Tapped send")
+        case 2:
+            self.navigationController?.popToRootViewController(animated: true)
+        case 3:
+            print("Tapped search")
+        default:
+            print("default")
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         imgBackground.setCornerRadius(value: 50.0)
+        chatSendBtn.roundedButton()
         tvMessages.delegate = self
         tvMessages.dataSource = self
         updateUI()

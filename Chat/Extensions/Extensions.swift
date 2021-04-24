@@ -49,3 +49,12 @@ extension UIView {
     }
 }
 
+extension UIButton {
+        public func roundedButton() {
+           self.contentMode = UIView.ContentMode.scaleAspectFill
+           self.layer.cornerRadius = self.frame.height / 2
+           self.layer.masksToBounds = false
+           self.clipsToBounds = true
+         }
+}
+
