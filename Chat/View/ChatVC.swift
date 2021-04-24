@@ -16,7 +16,12 @@ class ChatVC: UIViewController {
     
     @IBOutlet weak var chatInputView: UIView!
     
-    var userId : String?
+    var friendId : String?
+    
+    var friendName : String?
+    
+    var friendProfilePic : String?
+
     
     var messages: [Message] = []
     
@@ -44,17 +49,25 @@ class ChatVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        updateUI()
+        loadChatList()
+    }
+    
+    func updateUI(){
         imgBackground.setCornerRadius(value: 50.0)
         chatSendBtn.roundedButton()
         tvMessages.delegate = self
         tvMessages.dataSource = self
-        updateUI()
-    }
-    
-    func updateUI(){
         chatInputView.setCornerRadius(value: 25.0)
         chatInputView.setBorder(color: UIColor.gray, width: 1.0)
-        let messagesViewModel = MessagesViewModel(userId: userId ?? "")
+        if let friendName = friendName, let friendProfilePic = friendProfilePic, let url = URL(string: friendProfilePic), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+            self.userName.text = friendName
+            self.userProfilePic.maskCircle(image: image)
+        }
+    }
+    
+    func loadChatList(){
+        let messagesViewModel = MessagesViewModel(userId: friendId ?? "")
         messagesViewModel.bindMessagesViewModelToController = {
             self.messages = messagesViewModel.messagesData
             DispatchQueue.main.async {
@@ -83,12 +96,24 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let messageData = messages[indexPath.item]
-        if messageData.to == userId {
-            let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! ChatCell
-            let message = messageData.message
-            cell.chatMessage.text = "  \(message ?? "")  "
-            cell.chatMessage.setRoundedCorner()
-            return cell
+        if messageData.to == friendId {
+            if messageData.type == "media" || messageData.type == "document" {
+                let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendImageCell", for: indexPath) as! ChatCell
+                let image = messageData.attachments
+                if image.count > 0 , let url = URL(string: image[0]), let data = try? Data(contentsOf: url) {
+                    cell.chatImage.image = UIImage(data: data)
+                }else{
+                    cell.chatImage.image = UIImage(named: AssetsName.icon_default_chat_image)
+                }
+                cell.chatImage.setCorner(value: 20.0)
+                return cell
+            }else{
+                let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! ChatCell
+                let message = messageData.message
+                cell.chatMessage.text = "  \(message ?? "")  "
+                cell.chatMessage.setRoundedCorner()
+                return cell
+            }
         }else{
             let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnCell", for: indexPath) as! ChatCell
             let message = messageData.message

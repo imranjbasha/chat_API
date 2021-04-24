@@ -26,6 +26,13 @@ extension UIImageView {
          }
 }
 
+extension UIImageView {
+    public func setCorner(value: CGFloat) {
+            self.layer.cornerRadius = value
+            self.layer.masksToBounds = true
+         }
+}
+
 extension UIView {
         public func maskCircle() {
            self.contentMode = UIView.ContentMode.scaleAspectFill

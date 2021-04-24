@@ -57,9 +57,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let userId = friendsList[indexPath.item]._id
+        let friend = friendsList[indexPath.item]
         let chatVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
-        chatVC.userId = userId
+        chatVC.friendId = friend._id
+        if let firstName = friend.firstName, let lastName = friend.lastName, let profilePic = friend.avatar{
+            chatVC.friendName = "\(firstName) \(lastName)"
+            chatVC.friendProfilePic = profilePic
+        }
         self.navigationController?.pushViewController(chatVC, animated: false)
     }
 }
