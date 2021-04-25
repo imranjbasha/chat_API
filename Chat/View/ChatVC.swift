@@ -29,6 +29,8 @@ class ChatVC: UIViewController {
     
     var isVisible: Bool = false
     
+    var spinner = UIActivityIndicatorView(style: .large)
+    
     @IBOutlet weak var tfChat: UITextField!
     
     @IBOutlet weak var chatSendBtn: UIButton!
@@ -41,7 +43,7 @@ class ChatVC: UIViewController {
         
         switch sender.tag {
         case 1:
-            print("Tapped send")
+            sendChat()
         case 2:
             self.navigationController?.popToRootViewController(animated: true)
         case 3:
@@ -58,6 +60,7 @@ class ChatVC: UIViewController {
     }
     
     func updateUI(){
+        self.view.showProgress(spinner: spinner)
         imgBackground.setCornerRadius(value: 50.0)
         chatSendBtn.roundedButton()
         tvMessages.delegate = self
@@ -77,8 +80,27 @@ class ChatVC: UIViewController {
         let messagesViewModel = MessagesViewModel(userId: friendId ?? "")
         messagesViewModel.bindMessagesViewModelToController = {
             self.messages = messagesViewModel.messagesData
+            self.refreshList()
+        }
+    }
+    
+    func refreshList(){
+        DispatchQueue.main.async {
+            self.tvMessages.reloadData()
+            let indexpath = IndexPath(row: self.messages.count-1, section: 0)
+            self.tvMessages.scrollToRow(at: indexpath, at: .bottom, animated: false)
+            self.view.hideProgress(spinner: self.spinner)
+        }
+    }
+    
+    func sendChat(){
+        if let message = tfChat.text, !message.isEmpty {
+            self.view.showProgress(spinner: spinner)
+            let message = Message(message: message, to: "", from: "", timestamp: "", attachments: [], type: "")
+            self.messages.append(message)
             DispatchQueue.main.async {
-                self.tvMessages.reloadData()
+                self.tfChat.text = ""
+                self.refreshList()
             }
         }
     }

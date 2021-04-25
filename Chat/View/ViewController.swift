@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     
     var friendsList: [Friend] = []
     
+    var spinner = UIActivityIndicatorView(style: .large)
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -23,6 +26,7 @@ class ViewController: UIViewController {
     }
     
     func updateUI(){
+        self.view.showProgress(spinner: spinner)
         self.imgbackground.layer.cornerRadius = 50.0
         self.imgbackground.layer.masksToBounds = true
         let friendsViewModel = FriendsViewModel()
@@ -30,6 +34,7 @@ class ViewController: UIViewController {
             self.friendsList = friendsViewModel.friendsData
             DispatchQueue.main.async {
                 self.tvChatFriendList.reloadData()
+                self.view.hideProgress(spinner: self.spinner)
             }
         }
     }

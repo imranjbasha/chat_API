@@ -65,3 +65,21 @@ extension UIButton {
          }
 }
 
+extension UIView {
+    public func showProgress(spinner: UIActivityIndicatorView) {
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.color = UIColor(red: 0.11, green: 0.17, blue: 0.35, alpha: 1.0)
+        spinner.startAnimating()
+        self.addSubview(spinner)
+        spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    }
+}
+
+extension UIView {
+    public func hideProgress(spinner: UIActivityIndicatorView) {
+        spinner.stopAnimating()
+    }
+}
+
+
