@@ -16,6 +16,8 @@ class ChatVC: UIViewController {
     
     @IBOutlet weak var chatInputView: UIView!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     var friendId : String?
     
     var friendName : String?
@@ -24,6 +26,8 @@ class ChatVC: UIViewController {
 
     
     var messages: [Message] = []
+    
+    var isVisible: Bool = false
     
     @IBOutlet weak var tfChat: UITextField!
     
@@ -60,6 +64,9 @@ class ChatVC: UIViewController {
         tvMessages.dataSource = self
         chatInputView.setCornerRadius(value: 25.0)
         chatInputView.setBorder(color: UIColor.gray, width: 1.0)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIApplication.keyboardWillChangeFrameNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         if let friendName = friendName, let friendProfilePic = friendProfilePic, let url = URL(string: friendProfilePic), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
             self.userName.text = friendName
             self.userProfilePic.maskCircle(image: image)
@@ -74,6 +81,23 @@ class ChatVC: UIViewController {
                 self.tvMessages.reloadData()
             }
         }
+    }
+    
+    @objc private func keyboardWillChangeFrame(_ notification: Notification) {
+        if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            var keyboardHeight = view.bounds.height - endFrame.origin.y
+            if #available(iOS 11, *) {
+                if keyboardHeight > 0 {
+                    keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom
+                }
+            }
+            bottomConstraint.constant = keyboardHeight + 8
+            view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     /*
     // MARK: - Navigation

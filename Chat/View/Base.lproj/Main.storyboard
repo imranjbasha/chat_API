@@ -108,7 +108,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cOq-Cr-rjJ">
-                                <rect key="frame" x="0.0" y="140" width="414" height="656"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="652"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FriendImageCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FriendImageCell" id="ZCy-xN-KGt" userLabel="FriendImageCell" customClass="ChatCell" customModule="Chat" customModuleProvider="target">
@@ -205,11 +205,11 @@
                             <constraint firstItem="Up9-JJ-rht" firstAttribute="centerX" secondItem="QRi-Di-taU" secondAttribute="centerX" id="LXc-Sk-fGG"/>
                             <constraint firstItem="5nI-jy-4Bt" firstAttribute="top" secondItem="y5w-tt-71m" secondAttribute="top" constant="120" id="Nnf-oG-Qc2"/>
                             <constraint firstItem="8SE-yn-Gyv" firstAttribute="top" secondItem="y5w-tt-71m" secondAttribute="top" id="Qln-9D-EOy"/>
+                            <constraint firstItem="QRi-Di-taU" firstAttribute="top" secondItem="cOq-Cr-rjJ" secondAttribute="bottom" constant="10" id="S7c-Hf-Iqe"/>
                             <constraint firstItem="5nI-jy-4Bt" firstAttribute="leading" secondItem="y5w-tt-71m" secondAttribute="leading" id="XlC-4a-l7D"/>
                             <constraint firstItem="cOq-Cr-rjJ" firstAttribute="leading" secondItem="y5w-tt-71m" secondAttribute="leading" id="aaE-kn-NSn"/>
                             <constraint firstAttribute="trailing" secondItem="5nI-jy-4Bt" secondAttribute="trailing" id="bMI-oX-Dui"/>
                             <constraint firstAttribute="trailing" secondItem="cOq-Cr-rjJ" secondAttribute="trailing" id="hAa-pa-KkS"/>
-                            <constraint firstAttribute="bottom" secondItem="cOq-Cr-rjJ" secondAttribute="bottom" constant="100" id="kw4-Xg-sRK"/>
                             <constraint firstItem="cOq-Cr-rjJ" firstAttribute="top" secondItem="y5w-tt-71m" secondAttribute="top" constant="140" id="rIk-FY-8eY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QRi-Di-taU" secondAttribute="trailing" constant="15" id="rSA-4b-9P3"/>
                             <constraint firstItem="5nI-jy-4Bt" firstAttribute="top" secondItem="8SE-yn-Gyv" secondAttribute="bottom" id="s0j-T3-4VJ"/>
@@ -219,6 +219,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="wc1-Lx-AW9" id="gGr-FV-jRo"/>
                         <outlet property="chatInputView" destination="cxl-IR-8Bk" id="1nj-Fr-J07"/>
                         <outlet property="chatSendBtn" destination="QRi-Di-taU" id="XJC-g1-9kC"/>
                         <outlet property="imgBackground" destination="5nI-jy-4Bt" id="esf-qq-L21"/>
