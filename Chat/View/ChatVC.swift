@@ -18,6 +18,19 @@ class ChatVC: UIViewController {
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var largerView: UIView!
+    
+    
+    @IBOutlet weak var largerScrollView: UIScrollView!{
+        didSet{
+            largerScrollView.delegate = self
+            largerScrollView.minimumZoomScale = 1.0
+            largerScrollView.maximumZoomScale = 10.0
+        }
+    }
+    
+    @IBOutlet weak var largerImageView: UIImageView!
+    
     var friendId : String?
     
     var friendName : String?
@@ -48,6 +61,10 @@ class ChatVC: UIViewController {
             self.navigationController?.popToRootViewController(animated: true)
         case 3:
             print("Tapped search")
+        case 4:
+            largerView.isHidden =  true
+            largerScrollView.minimumZoomScale = 1.0
+            largerScrollView.maximumZoomScale = 10.0
         default:
             print("default")
         }
@@ -68,12 +85,17 @@ class ChatVC: UIViewController {
         chatInputView.setCornerRadius(value: 25.0)
         chatInputView.setBorder(color: UIColor.gray, width: 1.0)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIApplication.keyboardWillChangeFrameNotification, object: nil)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
         if let friendName = friendName, let friendProfilePic = friendProfilePic, let url = URL(string: friendProfilePic), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
             self.userName.text = friendName
             self.userProfilePic.maskCircle(image: image)
         }
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return largerImageView
     }
     
     func loadChatList(){
@@ -102,6 +124,17 @@ class ChatVC: UIViewController {
                 self.tfChat.text = ""
                 self.refreshList()
             }
+        }
+    }
+    
+    func showLargeImage(imageUrlString: String) {
+        if let url = NSURL(string: imageUrlString), let data = try? Data(contentsOf: url as URL) {
+            self.view.hideProgress(spinner: self.spinner)
+            largerView.isHidden = false
+            largerImageView.image = UIImage(data: data)
+            largerScrollView.zoomScale = 1.0
+        }else{
+            self.view.hideProgress(spinner: self.spinner)
         }
     }
     
@@ -166,6 +199,17 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
             cell.chatMessage.text = "  \(message ?? "")  "
             cell.chatMessage.setRoundedCorner()
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.view.showProgress(spinner: spinner)
+        let messageData = messages[indexPath.item]
+        let images = messageData.attachments
+        if (messageData.type == "media" || messageData.type == "document") && images.count > 0 {
+                self.showLargeImage(imageUrlString: images[0])
+        }else {
+            self.view.hideProgress(spinner: self.spinner)
         }
     }
 }
