@@ -57,7 +57,7 @@ class ChatVC: UIViewController {
         
         switch sender.tag {
         case 1:
-            sendChat()
+            sendTextChat()
         case 2:
             self.navigationController?.popToRootViewController(animated: true)
         case 3:
@@ -116,26 +116,22 @@ class ChatVC: UIViewController {
         }
     }
     
-    func sendChat(){
+    func sendTextChat(){
         if let message = tfChat.text, !message.isEmpty {
             self.view.showProgress(spinner: spinner)
-            let message = Message(message: message, to: "", from: "", timestamp: "", attachments: [], type: "")
-            self.messages.append(message)
-            DispatchQueue.main.async {
+            let chatViewModel = ChatViewModel(userId: friendId ?? "", message: message, type: .text, file: "") 
+            chatViewModel.isChatSent = {
                 self.tfChat.text = ""
-                self.refreshList()
+                self.loadChatList()
             }
         }
     }
     
     func showLargeImage(imageUrlString: String) {
         if let url = URL(string: imageUrlString) {
-            self.view.hideProgress(spinner: self.spinner)
             largerView.isHidden = false
             largerImageView.sd_setImage(with: url as URL , placeholderImage: nil)
             largerScrollView.zoomScale = 1.0
-        }else{
-            self.view.hideProgress(spinner: self.spinner)
         }
     }
     
@@ -204,13 +200,10 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.view.showProgress(spinner: spinner)
         let messageData = messages[indexPath.item]
         let images = messageData.attachments
         if (messageData.type == "media" || messageData.type == "document") && images.count > 0 {
                 self.showLargeImage(imageUrlString: images[0])
-        }else {
-            self.view.hideProgress(spinner: self.spinner)
         }
     }
 }
