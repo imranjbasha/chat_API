@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ChatVC: UIViewController {
     
@@ -128,10 +129,10 @@ class ChatVC: UIViewController {
     }
     
     func showLargeImage(imageUrlString: String) {
-        if let url = NSURL(string: imageUrlString), let data = try? Data(contentsOf: url as URL) {
+        if let url = URL(string: imageUrlString) {
             self.view.hideProgress(spinner: self.spinner)
             largerView.isHidden = false
-            largerImageView.image = UIImage(data: data)
+            largerImageView.sd_setImage(with: url as URL , placeholderImage: nil)
             largerScrollView.zoomScale = 1.0
         }else{
             self.view.hideProgress(spinner: self.spinner)
@@ -179,8 +180,8 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
             if messageData.type == "media" || messageData.type == "document" {
                 let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendImageCell", for: indexPath) as! ChatCell
                 let image = messageData.attachments
-                if image.count > 0 , let url = URL(string: image[0]), let data = try? Data(contentsOf: url) {
-                    cell.chatImage.image = UIImage(data: data)
+                if image.count > 0 , let url = URL(string: image[0]) {
+                    cell.chatImage.sd_setImage(with: url as URL , placeholderImage: nil)
                 }else{
                     cell.chatImage.image = UIImage(named: AssetsName.icon_default_chat_image)
                 }

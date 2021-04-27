@@ -6,6 +6,7 @@ target 'Chat' do
   use_frameworks!
 
   pod 'Alamofire'
+  pod 'SDWebImage'
   
   # Pods for Chat
 
