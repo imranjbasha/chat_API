@@ -85,10 +85,7 @@ class ChatVC: UIViewController {
         tvMessages.dataSource = self
         chatInputView.setCornerRadius(value: 25.0)
         chatInputView.setBorder(color: UIColor.gray, width: 1.0)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIApplication.keyboardWillChangeFrameNotification, object: nil)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
+        addGesturesObservers()
         if let friendName = friendName, let friendProfilePic = friendProfilePic, let url = URL(string: friendProfilePic), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
             self.userName.text = friendName
             self.userProfilePic.maskCircle(image: image)
@@ -97,6 +94,13 @@ class ChatVC: UIViewController {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return largerImageView
+    }
+    
+    func addGesturesObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIApplication.keyboardWillChangeFrameNotification, object: nil)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        tvMessages.addGestureRecognizer(tapGesture)
     }
     
     func loadChatList(){
