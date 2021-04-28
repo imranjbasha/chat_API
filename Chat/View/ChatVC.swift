@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class ChatVC: UIViewController {
+class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var tvMessages: UITableView!
     
@@ -66,6 +66,12 @@ class ChatVC: UIViewController {
             largerView.isHidden =  true
             largerScrollView.minimumZoomScale = 1.0
             largerScrollView.maximumZoomScale = 10.0
+        case 5:
+            //camera
+            openCamera()
+        case 6:
+            //gallery
+            openGallery()
         default:
             print("default")
         }
@@ -139,6 +145,25 @@ class ChatVC: UIViewController {
         }
     }
     
+    func openCamera(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera;
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func openGallery(){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        imagePicker.mediaTypes = ["public.image"]
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     @objc private func keyboardWillChangeFrame(_ notification: Notification) {
         if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             var keyboardHeight = view.bounds.height - endFrame.origin.y
@@ -209,5 +234,13 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
         if (messageData.type == "media" || messageData.type == "document") && images.count > 0 {
                 self.showLargeImage(imageUrlString: images[0])
         }
+    }
+}
+
+extension ChatVC: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as! UIImage
+        dismiss(animated:true, completion: nil)
     }
 }
