@@ -127,10 +127,13 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     func sendTextChat(){
         if let message = tfChat.text, !message.isEmpty {
             self.view.showProgress(spinner: spinner)
-            let chatViewModel = ChatViewModel(userId: friendId ?? "", message: message, type: .text, file: "") 
-            chatViewModel.isChatSent = {
-                self.tfChat.text = ""
-                self.loadChatList()
+            let image = UIImage(named: "icon_back")
+            if let data = image?.pngData() {
+                let chatViewModel = ChatViewModel(userId: friendId ?? "", message: message, type: .text, file: data, fileName: "")
+                chatViewModel.isChatSent = {
+                    self.tfChat.text = ""
+                    self.loadChatList()
+                }
             }
         }
     }
@@ -238,7 +241,16 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
 extension ChatVC: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.view.showProgress(spinner: self.spinner)
         let image = info[.originalImage] as! UIImage
+        let imageUrl = info[.imageURL] as! NSURL
+        let fileName = imageUrl.absoluteString
+        if let imageData = image.pngData() {
+            let chatVM = ChatViewModel(userId: friendId ?? "", message: "", type: .media, file: imageData, fileName: fileName ?? "file.png")
+            chatVM.isChatSent = {
+                self.loadChatList()
+                }
+            }
         dismiss(animated:true, completion: nil)
     }
 }
