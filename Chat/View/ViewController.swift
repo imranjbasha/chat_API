@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     var friendsList: [Friend] = []
     
     var spinner = UIActivityIndicatorView(style: .large)
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +26,6 @@ class ViewController: UIViewController {
     
     func updateUI(){
         self.view.showProgress(spinner: spinner)
-        self.imgbackground.layer.cornerRadius = 50.0
-        self.imgbackground.layer.masksToBounds = true
         let friendsViewModel = FriendsViewModel()
         friendsViewModel.bindFriendViewModelToController = {
             self.friendsList = friendsViewModel.friendsData

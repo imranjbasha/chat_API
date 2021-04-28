@@ -20,8 +20,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var largerView: UIView!
-    
-    
+        
     @IBOutlet weak var largerScrollView: UIScrollView!{
         didSet{
             largerScrollView.delegate = self
@@ -85,7 +84,6 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     func updateUI(){
         self.view.showProgress(spinner: spinner)
-        imgBackground.setCornerRadius(value: 50.0)
         chatSendBtn.roundedButton()
         tvMessages.delegate = self
         tvMessages.dataSource = self

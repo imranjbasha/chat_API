@@ -69,7 +69,6 @@ class APIService {
     
     func sendImageMessage(userId: String, message: String){
         
-        
     }
     
 }
