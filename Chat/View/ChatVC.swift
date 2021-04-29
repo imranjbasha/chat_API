@@ -182,6 +182,17 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    func convertUTCtoLocal(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+         if let date = dateFormatter.date(from: date as String){
+             dateFormatter.dateFormat = "hh:mm a"
+             return dateFormatter.string(from: date)
+         }else {
+             return ""
+         }
+    }
     /*
     // MARK: - Navigation
 
@@ -213,12 +224,14 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
                     cell.chatImage.image = UIImage(named: AssetsName.icon_default_chat_image)
                 }
                 cell.chatImage.setCorner(value: 20.0)
+                cell.timeStamp.text = convertUTCtoLocal(date: messageData.timestamp ?? "")
                 return cell
             }else{
                 let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnCell", for: indexPath) as! ChatCell
                 let message = messageData.message
                 cell.chatMessage.text = "  \(message ?? "")  "
                 cell.textOuterView.setCornerRadius(value: 15.0)
+                cell.timeStamp.text = convertUTCtoLocal(date: messageData.timestamp ?? "")
                 return cell
             }
         }else{
@@ -226,6 +239,7 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
             let message = messageData.message
             cell.chatMessage.text = "  \(message ?? "")  "
             cell.textOuterView.setCornerRadius(value: 15.0)
+            cell.timeStamp.text = convertUTCtoLocal(date: messageData.timestamp ?? "")
             return cell
         }
     }
