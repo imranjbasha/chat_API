@@ -753,7 +753,7 @@
                                     <constraint firstItem="mhb-cL-nTP" firstAttribute="centerX" secondItem="iOv-SB-8XB" secondAttribute="centerX" id="znd-hh-Qyf"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWn-5c-jEM">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWn-5c-jEM">
                                 <rect key="frame" x="294" y="712" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="ZNf-xQ-eTF"/>
@@ -788,6 +788,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ghn-eF-gsT"/>
                     <connections>
+                        <outlet property="addBtn" destination="RWn-5c-jEM" id="6oZ-SF-41w"/>
                         <outlet property="imgbackground" destination="hEi-L5-rdi" id="YNr-lE-YVn"/>
                         <outlet property="tvChatFriendList" destination="0jK-UX-YuI" id="6EC-8k-ist"/>
                     </connections>

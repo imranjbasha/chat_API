@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     var spinner = UIActivityIndicatorView(style: .large)
     
     @IBAction func onTappedAdd(_ sender: UIButton) {
-        if followers.count > 0 && following.count > 0 {
+        if followers.count > 0 || following.count > 0 {
             let followersVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FollowersVC") as! FollowersVC
             followersVC.followers = followers
             followersVC.followings = followers
@@ -55,9 +55,11 @@ class ViewController: UIViewController {
     func fetchAndSaveFollow(){
         let friendsViewModel = FriendsViewModel()
         friendsViewModel.fetchedFollowers =  {
+            self.addBtn.isHidden = false
             self.followers = friendsViewModel.followersData.followers
         }
         friendsViewModel.fetchedFollowing = {
+            self.addBtn.isHidden = false
             self.following = friendsViewModel.followingData.following
         }
     }
