@@ -13,9 +13,7 @@ class FriendListCell: UITableViewCell {
     @IBOutlet weak var ivFriendProfile: UIImageView!
     
     @IBOutlet weak var friendName: UILabel!
-    
-    @IBOutlet weak var lastMessage: UILabel!
-    
+        
     @IBOutlet weak var timeStamp: UILabel!
     
     @IBOutlet weak var imgChatTick: UIImageView!
@@ -23,6 +21,8 @@ class FriendListCell: UITableViewCell {
     @IBOutlet weak var badgeView: UIView!
     
     @IBOutlet weak var badgeCount: UILabel!
+    
+    @IBOutlet weak var chatRequestBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

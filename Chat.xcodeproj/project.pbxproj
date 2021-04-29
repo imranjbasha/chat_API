@@ -33,6 +33,7 @@
 		0397F7112632ED7800E90021 /* DarkerGrotesque-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0397F7052632E48600E90021 /* DarkerGrotesque-Semibold.ttf */; };
 		0397FF0F263822AE00E90021 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0397FF0E263822AE00E90021 /* ChatViewModel.swift */; };
 		0397FF152638278800E90021 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0397FF142638278800E90021 /* Enums.swift */; };
+		0397FFA8263B059E00E90021 /* FollowersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0397FFA7263B059A00E90021 /* FollowersVC.swift */; };
 		32444C3C52B873F0D5D2F636 /* Pods_Chat_ChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80981EA740D95D6DFFB1711B /* Pods_Chat_ChatUITests.framework */; };
 		ECFA4DCD5FDF3209921329D3 /* Pods_ChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB13B67ABB16E77C02CB8F32 /* Pods_ChatTests.framework */; };
 		F5D79E02F2D82D7EF90F03F4 /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167BF7AD72F5B9E506EAEB89 /* Pods_Chat.framework */; };
@@ -88,6 +89,7 @@
 		0397F7072632E48600E90021 /* DarkerGrotesque-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DarkerGrotesque-Black.ttf"; path = "../../../../../Downloads/darker-grotesque/DarkerGrotesque-Black.ttf"; sourceTree = "<group>"; };
 		0397FF0E263822AE00E90021 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		0397FF142638278800E90021 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		0397FFA7263B059A00E90021 /* FollowersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersVC.swift; sourceTree = "<group>"; };
 		167BF7AD72F5B9E506EAEB89 /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18124CDD18F0A002CCE0FA74 /* Pods-ChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatTests.debug.xcconfig"; path = "Target Support Files/Pods-ChatTests/Pods-ChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44AF03DEF700C0F23F1BD945 /* Pods-Chat-ChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat-ChatUITests.release.xcconfig"; path = "Target Support Files/Pods-Chat-ChatUITests/Pods-Chat-ChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				035F583E262D5D7500BD280F /* Main.storyboard */,
 				035F5843262D5D7A00BD280F /* LaunchScreen.storyboard */,
 				035F5EC1262EDB9000BD280F /* ChatVC.swift */,
+				0397FFA7263B059A00E90021 /* FollowersVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				035F5EBD262EDAEF00BD280F /* ChatCell.swift in Sources */,
 				035F5896262D88FF00BD280F /* APIService.swift in Sources */,
 				035F5839262D5D7500BD280F /* AppDelegate.swift in Sources */,
+				0397FFA8263B059E00E90021 /* FollowersVC.swift in Sources */,
 				035F583B262D5D7500BD280F /* SceneDelegate.swift in Sources */,
 				035F589E262D8EF200BD280F /* FriendsViewModel.swift in Sources */,
 				035F588B262D651D00BD280F /* Chat.swift in Sources */,

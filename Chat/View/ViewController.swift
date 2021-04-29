@@ -16,6 +16,10 @@ class ViewController: UIViewController {
     
     var spinner = UIActivityIndicatorView(style: .large)
     
+    @IBAction func onTappedAdd(_ sender: UIButton) {
+        let followersVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FollowersVC") as! FollowersVC
+        present(followersVC, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
