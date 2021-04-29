@@ -240,6 +240,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="Ybl-l8-83m" secondAttribute="bottom" constant="25" id="2KR-kD-w6S"/>
                                                         <constraint firstItem="vig-Na-bcq" firstAttribute="centerY" secondItem="Kzq-7h-Y5i" secondAttribute="centerY" id="8Hh-If-yp9"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ybl-l8-83m" secondAttribute="trailing" constant="45" id="MKn-qR-gdl"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="240" id="N6T-hG-jdg"/>
                                                         <constraint firstAttribute="trailing" secondItem="Kzq-7h-Y5i" secondAttribute="trailing" constant="10" id="O5C-A9-cr1"/>
                                                         <constraint firstItem="Kzq-7h-Y5i" firstAttribute="leading" secondItem="vig-Na-bcq" secondAttribute="trailing" constant="5" id="SvJ-g8-Tdm"/>
                                                         <constraint firstItem="Ybl-l8-83m" firstAttribute="centerY" secondItem="ivG-xR-j4I" secondAttribute="centerY" id="XYf-u0-Mtv"/>
@@ -270,17 +271,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqJ-RQ-153">
-                                                    <rect key="frame" x="40" y="10" width="50" height="50"/>
+                                                    <rect key="frame" x="40" y="10" width="65" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vw7-Ec-wtt">
-                                                            <rect key="frame" x="0.0" y="25" width="0.0" height="0.0"/>
+                                                            <rect key="frame" x="15" y="25" width="0.0" height="0.0"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="DarkerGrotesque-Bold" family="Darker Grotesque" pointSize="21"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:30 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLf-2D-3fD">
-                                                            <rect key="frame" x="-4" y="33" width="44" height="12"/>
+                                                            <rect key="frame" x="11" y="33" width="44" height="12"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -290,11 +291,12 @@
                                                     <color key="backgroundColor" red="0.11372549019607843" green="0.17254901960784313" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="vw7-Ec-wtt" secondAttribute="trailing" constant="50" id="Nlp-9K-xQ9"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="240" id="Pzf-bq-uSJ"/>
                                                         <constraint firstAttribute="bottom" secondItem="vw7-Ec-wtt" secondAttribute="bottom" constant="25" id="Rwb-4B-THN"/>
                                                         <constraint firstItem="vw7-Ec-wtt" firstAttribute="centerY" secondItem="gqJ-RQ-153" secondAttribute="centerY" id="V6h-xs-5HX"/>
                                                         <constraint firstAttribute="bottom" secondItem="ZLf-2D-3fD" secondAttribute="bottom" constant="5" id="gBu-Mt-FH5"/>
                                                         <constraint firstAttribute="trailing" secondItem="ZLf-2D-3fD" secondAttribute="trailing" constant="10" id="gz4-8e-XKy"/>
-                                                        <constraint firstItem="vw7-Ec-wtt" firstAttribute="leading" secondItem="gqJ-RQ-153" secondAttribute="leading" id="lVn-zj-uMq"/>
+                                                        <constraint firstItem="vw7-Ec-wtt" firstAttribute="leading" secondItem="gqJ-RQ-153" secondAttribute="leading" constant="15" id="yhW-YS-OZY"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

@@ -17,7 +17,7 @@ class ChatCell: UITableViewCell {
     @IBOutlet weak var timeStamp: UILabel!
     
     @IBOutlet weak var textOuterView: UIView!
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
