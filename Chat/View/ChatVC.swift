@@ -75,6 +75,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
             print("default")
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -243,10 +244,12 @@ extension ChatVC: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.view.showProgress(spinner: self.spinner)
         let image = info[.originalImage] as! UIImage
-        let imageUrl = info[.imageURL] as! NSURL
-        let fileName = imageUrl.absoluteString
+        var fileName = UUID().uuidString
+        if let imageUrl = info[.mediaURL] as? NSURL, let absoluteString = imageUrl.absoluteString {
+            fileName = absoluteString
+        }
         if let imageData = image.pngData() {
-            let chatVM = ChatViewModel(userId: friendId ?? "", message: "", type: .media, file: imageData, fileName: fileName ?? "file.png")
+            let chatVM = ChatViewModel(userId: friendId ?? "", message: "", type: .media, file: imageData, fileName: fileName)
             chatVM.isChatSent = {
                 self.loadChatList()
                 }
