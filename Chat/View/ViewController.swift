@@ -12,13 +12,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var tvChatFriendList: UITableView!
     @IBOutlet weak var imgbackground: UIImageView!
     
-    var friendsList: [Friend] = []
+    @IBOutlet weak var addBtn: UIButton!
+    
+    var friendsList: Friends = []
+    
+    var followers: [Friend] = []
+
+    var following: [Friend] = []
+
     
     var spinner = UIActivityIndicatorView(style: .large)
     
     @IBAction func onTappedAdd(_ sender: UIButton) {
-        let followersVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FollowersVC") as! FollowersVC
-        present(followersVC, animated: true, completion: nil)
+        if followers.count > 0 && following.count > 0 {
+            let followersVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FollowersVC") as! FollowersVC
+            followersVC.followers = followers
+            followersVC.followings = followers
+            present(followersVC, animated: true, completion: nil)
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +37,7 @@ class ViewController: UIViewController {
         tvChatFriendList.delegate = self
         tvChatFriendList.dataSource = self
         updateUI()
+        fetchAndSaveFollow()
     }
     
     func updateUI(){
@@ -37,6 +49,16 @@ class ViewController: UIViewController {
                 self.tvChatFriendList.reloadData()
                 self.view.hideProgress(spinner: self.spinner)
             }
+        }
+    }
+    
+    func fetchAndSaveFollow(){
+        let friendsViewModel = FriendsViewModel()
+        friendsViewModel.fetchedFollowers =  {
+            self.followers = friendsViewModel.followersData.followers
+        }
+        friendsViewModel.fetchedFollowing = {
+            self.following = friendsViewModel.followingData.following
         }
     }
 }

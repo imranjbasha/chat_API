@@ -16,6 +16,13 @@ struct Friend: Codable {
 
 typealias Friends = [Friend]
 
+struct Followers: Codable {
+    let followers: [Friend]
+}
+
+struct Followings: Codable {
+    let following: [Friend]
+}
 struct Message: Codable {
     let message: String?
     let to: String?

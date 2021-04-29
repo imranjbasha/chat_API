@@ -11,6 +11,8 @@ import Alamofire
 class APIService {
     
     let baseurl_friendList = "http://34.201.129.14:5000/friend-list"
+    let baseurl_followers = "http://34.201.129.14:5000/followers"
+    let baseurl_following = "http://34.201.129.14:5000/following"
     let baseurl_messages = "http://34.201.129.14:5000/messages"
     let baseurl_chat_attachments = "http://34.201.129.14:5000/messages/attachments"
     let headers: HTTPHeaders = ["Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFmNDZmYThlZTBkOTQxMTA3NmQyNWMiLCJpYXQiOjE2MTY0MjU2MjB9.z7DfS7nfosTNfrfprAYE34CBYUA_iW6UnWL_pvTJBeI"]
@@ -32,6 +34,43 @@ class APIService {
             }
         }
     }
+    
+    func fetchFollowers(completion: @escaping (_ data: Followers) -> Void){
+        AF.request(baseurl_followers, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON() { response in
+            switch response.result {
+            case .success:
+                if let data = response.data {
+                do {
+                    let followers = try JSONDecoder().decode(Followers.self, from: data)
+                    completion(followers)
+                    }catch{
+                        print(error.localizedDescription)
+                    }
+            }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchFollowings(completion: @escaping (_ data: Followings) -> Void){
+        AF.request(baseurl_following, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON() { response in
+            switch response.result {
+            case .success:
+                if let data = response.data {
+                do {
+                    let (followings) = try JSONDecoder().decode(Followings.self, from: data)
+                    completion(followings)
+                    }catch{
+                        print(error.localizedDescription)
+                    }
+            }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
     
     func fetchChatMessagesFromBackend(userId: String, completion: @escaping (_ data: [Message]) -> Void){
         AF.request(baseurl_messages+"/"+userId, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON() { response in

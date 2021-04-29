@@ -68,9 +68,9 @@
             filePath = "Chat/APIService/APIService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "sendMediaMessage(userId:message:imageData:completion:)"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "sendMediaMessage(userId:message:imageData:fileName:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

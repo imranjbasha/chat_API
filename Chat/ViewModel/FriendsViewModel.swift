@@ -15,13 +15,32 @@ class FriendsViewModel: NSObject {
                 self.bindFriendViewModelToController()
             }
         }
+    
+    private(set) var followersData : Followers! {
+        didSet {
+            self.fetchedFollowers()
+        }
+    }
+    
+    private(set) var followingData : Followings! {
+        didSet {
+            self.fetchedFollowing()
+        }
+    }
         
         var bindFriendViewModelToController : (() -> ()) = {}
+   
+        var fetchedFollowers : (() -> ()) = {}
+
+        var fetchedFollowing : (() -> ()) = {}
+
         
         override init() {
             super.init()
             apiService =  APIService()
             callFuncToGetFriendsData()
+            callFuncToGetFollowers()
+            callFuncToGetFollowing()
         }
         
         func callFuncToGetFriendsData() {
@@ -32,5 +51,23 @@ class FriendsViewModel: NSObject {
                 }
             })
         }
+    
+    func callFuncToGetFollowers() {
+        apiService.fetchFollowers(completion: { [weak self] (followersData) in
+            if let self = self,  followersData.followers.count > 0 {
+                self.followersData = followersData
+                self.apiService = nil
+            }
+        })
+    }
+    func callFuncToGetFollowing() {
+        apiService.fetchFollowings(completion: { [weak self] (followingData) in
+            if let self = self,  followingData.following.count > 0 {
+                self.followingData = followingData
+                self.apiService = nil
+            }
+        })
+    }
+
 
 }
