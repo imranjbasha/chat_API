@@ -205,7 +205,7 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
         let messageData = messages[indexPath.item]
         if messageData.to == friendId {
             if messageData.type == "media" || messageData.type == "document" {
-                let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendImageCell", for: indexPath) as! ChatCell
+                let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnImageCell", for: indexPath) as! ChatCell
                 let image = messageData.attachments
                 if image.count > 0 , let url = URL(string: image[0]) {
                     cell.chatImage.sd_setImage(with: url as URL , placeholderImage: nil)
@@ -215,17 +215,17 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
                 cell.chatImage.setCorner(value: 20.0)
                 return cell
             }else{
-                let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! ChatCell
+                let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnCell", for: indexPath) as! ChatCell
                 let message = messageData.message
                 cell.chatMessage.text = "  \(message ?? "")  "
-                cell.chatMessage.setRoundedCorner()
+                cell.textOuterView.setCornerRadius(value: 15.0)
                 return cell
             }
         }else{
             let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnCell", for: indexPath) as! ChatCell
             let message = messageData.message
             cell.chatMessage.text = "  \(message ?? "")  "
-            cell.chatMessage.setRoundedCorner()
+            cell.textOuterView.setCornerRadius(value: 15.0)
             return cell
         }
     }
