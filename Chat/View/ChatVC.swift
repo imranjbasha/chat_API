@@ -43,7 +43,10 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     var isVisible: Bool = false
     
     var spinner = UIActivityIndicatorView(style: .large)
-    
+        
+    var friendsVC :FriendsListVC?
+
+
     @IBOutlet weak var tfChat: UITextField!
     
     @IBOutlet weak var chatSendBtn: UIButton!
@@ -91,8 +94,13 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         chatInputView.setCornerRadius(value: 25.0)
         chatInputView.setBorder(color: UIColor.gray, width: 1.0)
         addGesturesObservers()
-        if let friendName = friendName, let friendProfilePic = friendProfilePic, let url = URL(string: friendProfilePic), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+        if let friendName = friendName {
             self.userName.text = friendName
+        }
+        if let friendProfilePic = friendProfilePic, let url = URL(string: friendProfilePic), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+            self.userProfilePic.maskCircle(image: image)
+        }else {
+            guard let image = UIImage(named: AssetsName.default_profile) else { return }
             self.userProfilePic.maskCircle(image: image)
         }
     }
@@ -109,19 +117,24 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     }
     
     func loadChatList(){
-        let messagesViewModel = MessagesViewModel(userId: friendId ?? "")
-        messagesViewModel.bindMessagesViewModelToController = {
-            self.messages = messagesViewModel.messagesData
-            self.refreshList()
+            refreshList()
+            let messagesViewModel = MessagesViewModel(userId: friendId ?? "")
+            messagesViewModel.bindMessagesViewModelToController = {
+                self.messages = messagesViewModel.messagesData
+                self.refreshList()
+            }
         }
-    }
     
     func refreshList(){
         DispatchQueue.main.async {
             self.tvMessages.reloadData()
-            let indexpath = IndexPath(row: self.messages.count-1, section: 0)
-            self.tvMessages.scrollToRow(at: indexpath, at: .bottom, animated: false)
+            if self.messages.count > 0 {
+                let indexpath = IndexPath(row: self.messages.count-1, section: 0)
+                self.tvMessages.scrollToRow(at: indexpath, at: .bottom, animated: false)
+            }
             self.view.hideProgress(spinner: self.spinner)
+//            self.callback?(self.messages, self.friendId ?? "")
+            self.friendsVC?.onShownMessages(messages: self.messages, userId: self.friendId ?? "")
         }
     }
     

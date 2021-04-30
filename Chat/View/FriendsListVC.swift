@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FriendsListVC: UIViewController {
 
     @IBOutlet weak var tvChatFriendList: UITableView!
     @IBOutlet weak var imgbackground: UIImageView!
@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     var followers: [Friend] = []
 
     var following: [Friend] = []
+    
+    var friendsMessages: [String: [Message]] = [:]
 
     
     var spinner = UIActivityIndicatorView(style: .large)
@@ -45,9 +47,21 @@ class ViewController: UIViewController {
         let friendsViewModel = FriendsViewModel()
         friendsViewModel.bindFriendViewModelToController = {
             self.friendsList = friendsViewModel.friendsData
-            DispatchQueue.main.async {
-                self.tvChatFriendList.reloadData()
-                self.view.hideProgress(spinner: self.spinner)
+            let group = DispatchGroup()
+                for friend in self.friendsList {
+                    group.enter()
+                    let messageVM = MessagesViewModel(userId: friend._id ?? "")
+                    messageVM.bindMessagesViewModelToController = {
+                        self.friendsMessages[messageVM.userId] = messageVM.messagesData
+                        group.leave()
+                    }
+                }
+            
+            group.notify(queue: .main) {
+                DispatchQueue.main.async {
+                    self.tvChatFriendList.reloadData()
+                    self.view.hideProgress(spinner: self.spinner)
+                }
             }
         }
     }
@@ -63,9 +77,13 @@ class ViewController: UIViewController {
             self.following = friendsViewModel.followingData.following
         }
     }
+    
+    func onShownMessages(messages: [Message], userId: String){
+        self.friendsMessages[userId] = messages
+    }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension FriendsListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friendsList.count
@@ -90,9 +108,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let friend = friendsList[indexPath.item]
         let chatVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
         chatVC.friendId = friend._id
-        if let firstName = friend.firstName, let lastName = friend.lastName, let profilePic = friend.avatar{
-            chatVC.friendName = "\(firstName) \(lastName)"
-            chatVC.friendProfilePic = profilePic
+        let firstName = friend.firstName
+        let lastName = friend.lastName
+        let profilePic = friend.avatar
+        chatVC.friendName = "\(firstName ?? "") \(lastName ?? "")"
+        chatVC.friendProfilePic = profilePic ?? ""
+        if self.friendsMessages.count == self.friendsList.count {
+            chatVC.messages = self.friendsMessages[friend._id ?? ""] ?? []
+            chatVC.friendsVC = self
         }
         self.navigationController?.pushViewController(chatVC, animated: false)
     }

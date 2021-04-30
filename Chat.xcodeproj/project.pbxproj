@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		035F5839262D5D7500BD280F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F5838262D5D7500BD280F /* AppDelegate.swift */; };
 		035F583B262D5D7500BD280F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F583A262D5D7500BD280F /* SceneDelegate.swift */; };
-		035F583D262D5D7500BD280F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F583C262D5D7500BD280F /* ViewController.swift */; };
+		035F583D262D5D7500BD280F /* FriendsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F583C262D5D7500BD280F /* FriendsListVC.swift */; };
 		035F5840262D5D7500BD280F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035F583E262D5D7500BD280F /* Main.storyboard */; };
 		035F5842262D5D7A00BD280F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035F5841262D5D7A00BD280F /* Assets.xcassets */; };
 		035F5845262D5D7A00BD280F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035F5843262D5D7A00BD280F /* LaunchScreen.storyboard */; };
@@ -60,7 +60,7 @@
 		035F5835262D5D7400BD280F /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		035F5838262D5D7500BD280F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		035F583A262D5D7500BD280F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		035F583C262D5D7500BD280F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		035F583C262D5D7500BD280F /* FriendsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListVC.swift; sourceTree = "<group>"; };
 		035F583F262D5D7500BD280F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		035F5841262D5D7A00BD280F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		035F5844262D5D7A00BD280F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 		035F586D262D5DAF00BD280F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				035F583C262D5D7500BD280F /* ViewController.swift */,
+				035F583C262D5D7500BD280F /* FriendsListVC.swift */,
 				035F583E262D5D7500BD280F /* Main.storyboard */,
 				035F5843262D5D7A00BD280F /* LaunchScreen.storyboard */,
 				035F5EC1262EDB9000BD280F /* ChatVC.swift */,
@@ -552,7 +552,7 @@
 			files = (
 				0397FF0F263822AE00E90021 /* ChatViewModel.swift in Sources */,
 				035F5EC2262EDB9000BD280F /* ChatVC.swift in Sources */,
-				035F583D262D5D7500BD280F /* ViewController.swift in Sources */,
+				035F583D262D5D7500BD280F /* FriendsListVC.swift in Sources */,
 				035F5ECE262EEDD600BD280F /* MessagesViewModel.swift in Sources */,
 				0397FF152638278800E90021 /* Enums.swift in Sources */,
 				035F5EBD262EDAEF00BD280F /* ChatCell.swift in Sources */,

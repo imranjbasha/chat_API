@@ -9,6 +9,7 @@ import UIKit
 
 class MessagesViewModel: NSObject {
     private var apiService : APIService!
+    var userId: String = ""
         private(set) var messagesData : Messages! {
             didSet {
                 self.bindMessagesViewModelToController()
@@ -27,6 +28,7 @@ class MessagesViewModel: NSObject {
     func callFuncToGetUserMessages(userId: String) {
             apiService.fetchChatMessagesFromBackend(userId: userId, completion: { [weak self] (messages) in
                 if let self = self,  messages.count > 0 {
+                    self.userId = userId
                     self.messagesData = messages
                     self.apiService = nil
                 }
