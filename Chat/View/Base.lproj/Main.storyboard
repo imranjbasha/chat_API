@@ -66,6 +66,14 @@
                                                                         <constraint firstAttribute="height" constant="60" id="pZU-tF-23o"/>
                                                                     </constraints>
                                                                 </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gy-lh-7Yr">
+                                                                    <rect key="frame" x="349" y="32.5" width="35" height="35"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="35" id="xi6-Kq-Qt9"/>
+                                                                        <constraint firstAttribute="width" constant="35" id="xxJ-Xe-w9l"/>
+                                                                    </constraints>
+                                                                    <state key="normal" backgroundImage="icon_chat"/>
+                                                                </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4O-iX-DBl">
                                                                     <rect key="frame" x="285" y="25" width="119" height="50"/>
                                                                     <color key="backgroundColor" red="0.1137254902" green="0.17254901959999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -82,7 +90,7 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="80" id="8P0-Fr-YjE"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="DarkerGrotesque-Bold" family="Darker Grotesque" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" name="DarkerGrotesque-Bold" family="Darker Grotesque" pointSize="23"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -97,6 +105,8 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="ZWN-Fd-zVO" firstAttribute="centerY" secondItem="BYj-vc-Guv" secondAttribute="centerY" id="1rp-ob-JJu"/>
+                                                                <constraint firstItem="2gy-lh-7Yr" firstAttribute="centerY" secondItem="BYj-vc-Guv" secondAttribute="centerY" id="EVO-SF-7nd"/>
+                                                                <constraint firstAttribute="trailing" secondItem="2gy-lh-7Yr" secondAttribute="trailing" constant="30" id="GSa-6I-jK9"/>
                                                                 <constraint firstItem="g4O-iX-DBl" firstAttribute="centerY" secondItem="BYj-vc-Guv" secondAttribute="centerY" id="JGK-Kk-pEJ"/>
                                                                 <constraint firstAttribute="trailing" secondItem="DGR-zS-qwp" secondAttribute="trailing" id="OKn-5h-ep6"/>
                                                                 <constraint firstItem="DGR-zS-qwp" firstAttribute="leading" secondItem="ZWN-Fd-zVO" secondAttribute="trailing" constant="-5" id="OX7-hG-wPG"/>
@@ -844,6 +854,7 @@
         <image name="icon_back" width="22.5" height="22.5"/>
         <image name="icon_background" width="756" height="1008"/>
         <image name="icon_camera" width="25" height="25"/>
+        <image name="icon_chat" width="25" height="25"/>
         <image name="icon_chat_send" width="22.5" height="22.5"/>
         <image name="icon_close" width="24" height="24"/>
         <image name="icon_double_tick" width="30" height="30"/>
