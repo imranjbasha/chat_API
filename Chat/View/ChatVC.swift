@@ -242,7 +242,7 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
             }else{
                 let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnCell", for: indexPath) as! ChatCell
                 let message = messageData.message
-                cell.chatMessage.text = message
+                cell.chatMessage.text = "\(message ?? "")    "
                 cell.textOuterView.setCornerRadius(value: 15.0)
                 cell.timeStamp.text = UtilsClass.convertUTCtoLocal(date: messageData.timestamp ?? "")
                 return cell
@@ -250,7 +250,7 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
         }else{
             let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! ChatCell
             let message = messageData.message
-            cell.chatMessage.text = message
+            cell.chatMessage.text = "\(message ?? "")    "
             cell.textOuterView.setCornerRadius(value: 15.0)
             cell.timeStamp.text = UtilsClass.convertUTCtoLocal(date: messageData.timestamp ?? "")
             return cell
