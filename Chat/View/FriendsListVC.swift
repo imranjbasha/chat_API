@@ -98,9 +98,29 @@ extension FriendsListVC: UITableViewDelegate, UITableViewDataSource {
         }
         cell.ivFriendProfile.maskCircle(image: image!)
         cell.friendName.text = "\(friend.firstName ?? "") \(friend.lastName ?? "")"
-        cell.imgChatTick.isHidden = true
-        cell.badgeView.isHidden = false
-        cell.badgeView.maskCircle()
+        let messages = self.friendsMessages[friend._id ?? ""] ?? []
+        if messages.count > 0 {
+            let lastMessage = messages[messages.count-1]
+            if lastMessage.to == friend._id {
+                cell.imgChatTick.isHidden = false
+                cell.timeStamp.isHidden = false
+                cell.timeStamp.text = UtilsClass.convertUTCtoLocal(date: lastMessage.timestamp ?? "")
+            }else {
+                var badgeCount: Int = 0
+                for message in messages.reversed() {
+                    if message.to != friend._id && !message.hasSeen {
+                        badgeCount = badgeCount+1
+                    }
+                }
+                if badgeCount > 0 {
+                    cell.badgeView.isHidden = false
+                    cell.badgeView.maskCircle()
+                    cell.badgeCount.text = "\(badgeCount)"
+                    cell.timeStamp.isHidden = false
+                    cell.timeStamp.text = UtilsClass.convertUTCtoLocal(date: lastMessage.timestamp ?? "")
+                }
+            }
+        }
         return cell
     }
     

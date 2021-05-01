@@ -23,6 +23,7 @@
 		035F5EC2262EDB9000BD280F /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F5EC1262EDB9000BD280F /* ChatVC.swift */; };
 		035F5ECE262EEDD600BD280F /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F5ECD262EEDD600BD280F /* MessagesViewModel.swift */; };
 		035F5ED4262EFAF600BD280F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F5ED3262EFAF500BD280F /* Extensions.swift */; };
+		03970068263D2F8A00E90021 /* UtilsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03970067263D2F8A00E90021 /* UtilsClass.swift */; };
 		0397F54C2631AC8000E90021 /* AssetsName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0397F54B2631AC7F00E90021 /* AssetsName.swift */; };
 		0397F70B2632ED7800E90021 /* DarkerGrotesque-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0397F7072632E48600E90021 /* DarkerGrotesque-Black.ttf */; };
 		0397F70C2632ED7800E90021 /* DarkerGrotesque-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0397F7042632E48600E90021 /* DarkerGrotesque-Bold.ttf */; };
@@ -79,6 +80,7 @@
 		035F5EC1262EDB9000BD280F /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		035F5ECD262EEDD600BD280F /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		035F5ED3262EFAF500BD280F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		03970067263D2F8A00E90021 /* UtilsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsClass.swift; sourceTree = "<group>"; };
 		0397F54B2631AC7F00E90021 /* AssetsName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsName.swift; sourceTree = "<group>"; };
 		0397F7012632E48600E90021 /* DarkerGrotesque-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DarkerGrotesque-Medium.ttf"; path = "../../../../../Downloads/darker-grotesque/DarkerGrotesque-Medium.ttf"; sourceTree = "<group>"; };
 		0397F7022632E48600E90021 /* DarkerGrotesque-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DarkerGrotesque-Regular.ttf"; path = "../../../../../Downloads/darker-grotesque/DarkerGrotesque-Regular.ttf"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		035F5837262D5D7400BD280F /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				03970053263D2C7600E90021 /* Utils */,
 				0397FF132638277600E90021 /* Enums */,
 				035F586B262D5D9B00BD280F /* Model */,
 				035F586D262D5DAF00BD280F /* View */,
@@ -258,6 +261,14 @@
 				035F5ED3262EFAF500BD280F /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		03970053263D2C7600E90021 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				03970067263D2F8A00E90021 /* UtilsClass.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		0397F7002632E45000E90021 /* Fonts */ = {
@@ -552,6 +563,7 @@
 			files = (
 				0397FF0F263822AE00E90021 /* ChatViewModel.swift in Sources */,
 				035F5EC2262EDB9000BD280F /* ChatVC.swift in Sources */,
+				03970068263D2F8A00E90021 /* UtilsClass.swift in Sources */,
 				035F583D262D5D7500BD280F /* FriendsListVC.swift in Sources */,
 				035F5ECE262EEDD600BD280F /* MessagesViewModel.swift in Sources */,
 				0397FF152638278800E90021 /* Enums.swift in Sources */,

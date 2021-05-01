@@ -30,6 +30,7 @@ struct Message: Codable {
     let timestamp: String?
     let attachments: [String]
     let type: String?
+    let hasSeen: Bool
 }
 
 typealias Messages = [Message]
