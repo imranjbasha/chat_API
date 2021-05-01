@@ -683,6 +683,7 @@
                                                     <constraints>
                                                         <constraint firstItem="3oD-mv-OdK" firstAttribute="top" secondItem="1IW-JU-7tp" secondAttribute="bottom" constant="5" id="5jk-fh-a8K"/>
                                                         <constraint firstItem="yaT-mQ-6EH" firstAttribute="top" secondItem="HUz-hn-ews" secondAttribute="bottom" constant="2.5" id="7we-Ci-ROl"/>
+                                                        <constraint firstAttribute="height" constant="80" id="9RI-Ha-her"/>
                                                         <constraint firstAttribute="trailing" secondItem="HUz-hn-ews" secondAttribute="trailing" id="XUJ-zX-Yda"/>
                                                         <constraint firstItem="Gwn-pv-btV" firstAttribute="trailing" secondItem="3oD-mv-OdK" secondAttribute="trailing" id="YYM-Hw-ZvK"/>
                                                         <constraint firstAttribute="trailing" secondItem="3oD-mv-OdK" secondAttribute="trailing" constant="35" id="a4Z-vL-FXp"/>
@@ -691,8 +692,14 @@
                                                         <constraint firstAttribute="trailing" secondItem="1IW-JU-7tp" secondAttribute="trailing" constant="15" id="n5g-ZJ-8Qo"/>
                                                         <constraint firstItem="1IW-JU-7tp" firstAttribute="top" secondItem="HUz-hn-ews" secondAttribute="bottom" constant="6" id="nWk-o2-i0M"/>
                                                         <constraint firstItem="1IW-JU-7tp" firstAttribute="leading" secondItem="yaT-mQ-6EH" secondAttribute="trailing" constant="15" id="oJN-bl-b5r"/>
-                                                        <constraint firstAttribute="height" constant="100" id="ras-wS-LNf"/>
                                                         <constraint firstItem="yaT-mQ-6EH" firstAttribute="leading" secondItem="iuG-CA-S0s" secondAttribute="leading" id="zPi-6U-rvc"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEP-4s-Xru">
+                                                    <rect key="frame" x="80" y="141" width="334" height="1"/>
+                                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="e4N-iC-mnR"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -703,7 +710,10 @@
                                                 <constraint firstItem="iuG-CA-S0s" firstAttribute="leading" secondItem="SFm-aJ-UfJ" secondAttribute="trailing" constant="15" id="NZH-Xm-BiV"/>
                                                 <constraint firstAttribute="trailing" secondItem="iuG-CA-S0s" secondAttribute="trailing" id="Ofd-0H-1Da"/>
                                                 <constraint firstItem="SFm-aJ-UfJ" firstAttribute="centerY" secondItem="iuG-CA-S0s" secondAttribute="centerY" id="RtA-5W-RHM"/>
+                                                <constraint firstItem="GEP-4s-Xru" firstAttribute="leading" secondItem="SFm-aJ-UfJ" secondAttribute="trailing" constant="-5" id="ftw-lB-ivR"/>
+                                                <constraint firstAttribute="bottom" secondItem="GEP-4s-Xru" secondAttribute="bottom" id="joc-iT-Z6F"/>
                                                 <constraint firstItem="yaT-mQ-6EH" firstAttribute="centerY" secondItem="SFm-aJ-UfJ" secondAttribute="centerY" id="l29-LD-xQt"/>
+                                                <constraint firstAttribute="trailing" secondItem="GEP-4s-Xru" secondAttribute="trailing" id="maX-A5-tpm"/>
                                                 <constraint firstItem="SFm-aJ-UfJ" firstAttribute="leading" secondItem="U90-Hh-QPO" secondAttribute="leadingMargin" id="q8W-oO-QFX"/>
                                                 <constraint firstAttribute="bottom" secondItem="iuG-CA-S0s" secondAttribute="bottom" id="wsa-ma-HYy"/>
                                             </constraints>
@@ -830,6 +840,9 @@
         <image name="icon_gallery" width="24" height="24"/>
         <image name="icon_search" width="25" height="25"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
