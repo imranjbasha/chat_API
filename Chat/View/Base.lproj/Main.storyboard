@@ -476,7 +476,7 @@
                                             <action selector="onTappedButtons:" destination="gyc-yQ-x3D" eventType="touchUpInside" id="7R2-DQ-24q"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2P-xc-JFy">
+                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2P-xc-JFy">
                                         <rect key="frame" x="359" y="17.5" width="25" height="25"/>
                                         <state key="normal" backgroundImage="icon_search"/>
                                         <connections>
@@ -749,7 +749,7 @@
                                         <color key="textColor" red="0.11372549019607843" green="0.17254901960784313" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ka8-P1-GpG">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ka8-P1-GpG">
                                         <rect key="frame" x="359" y="17.5" width="25" height="25"/>
                                         <state key="normal" backgroundImage="icon_search"/>
                                     </button>
