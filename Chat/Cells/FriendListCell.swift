@@ -24,6 +24,8 @@ class FriendListCell: UITableViewCell {
     
     @IBOutlet weak var chatRequestBtn: UIButton!
     
+    @IBOutlet weak var chatBtn: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

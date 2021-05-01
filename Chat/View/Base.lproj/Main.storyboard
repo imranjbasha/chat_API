@@ -129,6 +129,7 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
+                                                    <outlet property="chatBtn" destination="2gy-lh-7Yr" id="zGR-KD-sBo"/>
                                                     <outlet property="chatRequestBtn" destination="g4O-iX-DBl" id="Utu-AF-pgU"/>
                                                     <outlet property="friendName" destination="g0R-n2-D5y" id="cNG-g6-vYT"/>
                                                     <outlet property="ivFriendProfile" destination="ZWN-Fd-zVO" id="eXb-BN-UfO"/>

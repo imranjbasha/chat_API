@@ -18,6 +18,9 @@ class FollowersVC: UIViewController {
     
     var fullList: [Friend] = []
     
+    var friendsVC :FriendsListVC?
+
+    
     @IBAction func onTappedClose(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -42,6 +45,16 @@ class FollowersVC: UIViewController {
         }
     }
     
+    
+    @objc func chatButtonPressed(_sender: UIButton)
+    {
+        self.dismiss(animated: false) {
+            let index = _sender.tag
+            if self.fullList.count > index {
+                self.friendsVC?.onTappedChat(friend: self.fullList[index])
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -70,6 +83,8 @@ extension FollowersVC: UITableViewDelegate, UITableViewDataSource {
         cell.ivFriendProfile.maskCircle(image: image!)
         cell.friendName.text = "\(friend.firstName ?? "") \(friend.lastName ?? "")"
         cell.chatRequestBtn.roundedButton()
+        cell.chatBtn.tag = indexPath.row
+        cell.chatBtn.addTarget(self, action: #selector(FollowersVC.chatButtonPressed), for: .touchUpInside)
         return cell
     }
     

@@ -30,6 +30,7 @@ class FriendsListVC: UIViewController {
             let followersVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FollowersVC") as! FollowersVC
             followersVC.followers = followers
             followersVC.followings = followers
+            followersVC.friendsVC = self
             present(followersVC, animated: true, completion: nil)
         }
     }
@@ -80,6 +81,17 @@ class FriendsListVC: UIViewController {
     
     func onShownMessages(messages: [Message], userId: String){
         self.friendsMessages[userId] = messages
+    }
+    
+    func onTappedChat(friend: Friend){
+        let chatVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
+        chatVC.friendId = friend._id
+        let firstName = friend.firstName
+        let lastName = friend.lastName
+        let profilePic = friend.avatar
+        chatVC.friendName = "\(firstName ?? "") \(lastName ?? "")"
+        chatVC.friendProfilePic = profilePic ?? ""
+        self.navigationController?.pushViewController(chatVC, animated: false)
     }
 }
 
