@@ -21,7 +21,7 @@ class UtilsClass {
         
         if differenceOfDate.day! > 0 {
             if let date = dateFormatter.date(from: date as String){
-                dateFormatter.dateFormat = "dd-MMM-yyyy"
+                dateFormatter.dateFormat = "dd/MM/yy"
                 return dateFormatter.string(from: date)
             }else {
                 return ""
