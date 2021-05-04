@@ -54,6 +54,8 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var userName: UILabel!
     
     @IBOutlet weak var userProfilePic: UIImageView!
+        
+    @IBOutlet weak var clearView: UIView!
     
     @IBAction func onTappedButtons(_ sender: UIButton) {
         
@@ -63,7 +65,12 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         case 2:
             self.navigationController?.popToRootViewController(animated: true)
         case 3:
-            print("Tapped search")
+            if clearView.isHidden {
+                clearView.setCornerRadius(value: 10.0)
+                clearView.isHidden = false
+            }else{
+                clearView.isHidden = true
+            }
         case 4:
             largerView.isHidden =  true
             largerScrollView.minimumZoomScale = 1.0
@@ -74,6 +81,12 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         case 6:
             //gallery
             openGallery()
+        case 7:
+            let deleteVM = DeleteChatViewModel(messageId: "", type: ChatDeleteType.all, userId: friendId ?? "")
+            deleteVM.isClearedAll = {
+                self.clearView.isHidden = true
+                self.loadChatList()
+            }
         default:
             print("default")
         }
@@ -267,9 +280,17 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-                messages.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
+            let message = messages[indexPath.item]
+            if let messageId = message._id, let friendId = friendId {
+            let deleteVM = DeleteChatViewModel(messageId: messageId, type: ChatDeleteType.single, userId: friendId)
+                deleteVM.isMessageDeleted = {
+                    self.loadChatList()
+                    self.messages.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+                
             }
+        }
     }
 }
 

@@ -14,6 +14,7 @@ class APIService {
     let baseurl_followers = "http://34.201.129.14:5000/followers"
     let baseurl_following = "http://34.201.129.14:5000/following"
     let baseurl_messages = "http://34.201.129.14:5000/messages"
+    let baseurl_messages_clear = "http://34.201.129.14:5000/messages/clear_all"
     let baseurl_chat_attachments = "http://34.201.129.14:5000/messages/attachments"
     let headers: HTTPHeaders = ["Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFmNDZmYThlZTBkOTQxMTA3NmQyNWMiLCJpYXQiOjE2MTY0MjU2MjB9.z7DfS7nfosTNfrfprAYE34CBYUA_iW6UnWL_pvTJBeI"]
     
@@ -85,6 +86,7 @@ class APIService {
                     }
             }
             case .failure(let error):
+                completion([])
                 print(error.localizedDescription)
             }
         }
@@ -131,6 +133,36 @@ class APIService {
             }else {
                 completion(false)
             }
+        }
+    }
+    
+    func deleteMessage(messageId: String, userId: String, completion: @escaping ((_ isMessageDeleted: Bool) -> Void)){
+        let parameters = ["messageId": messageId,
+                          "userId": userId]
+        AF.request(baseurl_messages, method: .put, parameters: parameters, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                completion(true)
+                print("message deleted...")
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
+    }
+    
+    func clearAllMessages(userId: String, completion: @escaping ((_ isMessageDeleted: Bool) -> Void)){
+        let parameters = ["userId": userId]
+        AF.request(baseurl_messages_clear, method: .delete, parameters: parameters, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                completion(true)
+                print("all messages deleted...")
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+            }
+
         }
     }
     

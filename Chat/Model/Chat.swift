@@ -24,6 +24,7 @@ struct Followings: Codable {
     let following: [Friend]
 }
 struct Message: Codable {
+    let _id: String?
     let message: String?
     let to: String?
     let from: String?

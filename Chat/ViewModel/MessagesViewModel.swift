@@ -27,7 +27,7 @@ class MessagesViewModel: NSObject {
         
     func callFuncToGetUserMessages(userId: String) {
             apiService.fetchChatMessagesFromBackend(userId: userId, completion: { [weak self] (messages) in
-                if let self = self,  messages.count > 0 {
+                if let self = self {
                     self.userId = userId
                     self.messagesData = messages
                     self.apiService = nil

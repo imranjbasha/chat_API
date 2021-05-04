@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0330FDE6264153F00074CB26 /* DeleteChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330FDE5264153F00074CB26 /* DeleteChatViewModel.swift */; };
 		035F5839262D5D7500BD280F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F5838262D5D7500BD280F /* AppDelegate.swift */; };
 		035F583B262D5D7500BD280F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F583A262D5D7500BD280F /* SceneDelegate.swift */; };
 		035F583D262D5D7500BD280F /* FriendsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F583C262D5D7500BD280F /* FriendsListVC.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0330FDE5264153F00074CB26 /* DeleteChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChatViewModel.swift; sourceTree = "<group>"; };
 		035F5835262D5D7400BD280F /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		035F5838262D5D7500BD280F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		035F583A262D5D7500BD280F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				035F589D262D8EF200BD280F /* FriendsViewModel.swift */,
 				035F5ECD262EEDD600BD280F /* MessagesViewModel.swift */,
 				0397FF0E263822AE00E90021 /* ChatViewModel.swift */,
+				0330FDE5264153F00074CB26 /* DeleteChatViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				0397FFA8263B059E00E90021 /* FollowersVC.swift in Sources */,
 				035F583B262D5D7500BD280F /* SceneDelegate.swift in Sources */,
 				035F589E262D8EF200BD280F /* FriendsViewModel.swift in Sources */,
+				0330FDE6264153F00074CB26 /* DeleteChatViewModel.swift in Sources */,
 				035F588B262D651D00BD280F /* Chat.swift in Sources */,
 				035F5ED4262EFAF600BD280F /* Extensions.swift in Sources */,
 				035F5886262D631000BD280F /* FriendListCell.swift in Sources */,
