@@ -93,6 +93,23 @@ class FriendsListVC: UIViewController {
         chatVC.friendProfilePic = profilePic ?? ""
         self.navigationController?.pushViewController(chatVC, animated: false)
     }
+    
+    func showDeleteAlert(){
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deleteForMe = UIAlertAction(title: "Delete for me", style: .default) { (action) in
+            
+        }
+        
+        let deleteForAll = UIAlertAction(title: "Delete for everyone", style: .default) { (action) in
+            
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(deleteForMe)
+        alertController.addAction(deleteForAll)
+        alertController.addAction(cancel)
+        self.navigationController!.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension FriendsListVC: UITableViewDelegate, UITableViewDataSource {
@@ -150,6 +167,14 @@ extension FriendsListVC: UITableViewDelegate, UITableViewDataSource {
             chatVC.friendsVC = self
         }
         self.navigationController?.pushViewController(chatVC, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+//            self.friendsList.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+            showDeleteAlert()
+        }
     }
 }
 
