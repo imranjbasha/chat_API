@@ -192,6 +192,32 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    func showDeleteAlert(message: Message){
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deleteForMe = UIAlertAction(title: "Delete for me", style: .default) { (action) in
+            self.deleteMessageForMe(message: message)
+        }
+        
+        let deleteForAll = UIAlertAction(title: "Delete for everyone", style: .default) { (action) in
+            self.deleteMessageForMe(message: message)
+        }
+
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(deleteForMe)
+        alertController.addAction(deleteForAll)
+        alertController.addAction(cancel)
+        self.navigationController!.present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteMessageForMe(message: Message){
+        if let messageId = message._id, let friendId = friendId {
+        let deleteVM = DeleteChatViewModel(messageId: messageId, type: ChatDeleteType.single, userId: friendId)
+            deleteVM.isMessageDeleted = {
+                self.loadChatList()
+            }
+        }
+    }
+    
     @objc private func keyboardWillChangeFrame(_ notification: Notification) {
         if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             var keyboardHeight = view.bounds.height - endFrame.origin.y
@@ -281,15 +307,7 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let message = messages[indexPath.item]
-            if let messageId = message._id, let friendId = friendId {
-            let deleteVM = DeleteChatViewModel(messageId: messageId, type: ChatDeleteType.single, userId: friendId)
-                deleteVM.isMessageDeleted = {
-                    self.loadChatList()
-                    self.messages.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                }
-                
-            }
+            self.showDeleteAlert(message: message)
         }
     }
 }

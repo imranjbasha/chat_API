@@ -94,7 +94,7 @@ class FriendsListVC: UIViewController {
         self.navigationController?.pushViewController(chatVC, animated: false)
     }
     
-    func showDeleteAlert(){
+    func showDeleteAlert(friend: Friend){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let deleteForMe = UIAlertAction(title: "Delete for me", style: .default) { (action) in
             
@@ -173,7 +173,8 @@ extension FriendsListVC: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
 //            self.friendsList.remove(at: indexPath.row)
 //            tableView.deleteRows(at: [indexPath], with: .fade)
-            showDeleteAlert()
+            let friend = friendsList[indexPath.item]
+            showDeleteAlert(friend: friend)
         }
     }
 }
