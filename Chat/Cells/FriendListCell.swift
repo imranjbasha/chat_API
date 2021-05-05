@@ -26,6 +26,12 @@ class FriendListCell: UITableViewCell {
     
     @IBOutlet weak var chatBtn: UIButton!
     
+    @IBOutlet weak var headerTitle: UILabel!
+    
+    @IBOutlet weak var headerImageView: UIImageView!
+    
+    @IBOutlet weak var headerView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -35,3 +35,15 @@ struct Message: Codable {
 }
 
 typealias Messages = [Message]
+
+class Follow {
+    let users: [Friend]
+    var isOpened: Bool = false
+    var title: String = ""
+
+    init(users: [Friend], isOpened: Bool, title: String) {
+        self.users = users
+        self.isOpened = isOpened
+        self.title = title
+    }
+}
