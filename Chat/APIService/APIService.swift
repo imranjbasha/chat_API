@@ -136,9 +136,10 @@ class APIService {
         }
     }
     
-    func deleteMessage(messageId: String, userId: String, completion: @escaping ((_ isMessageDeleted: Bool) -> Void)){
+    func deleteMessage(messageId: String, userId: String, shouldDeleteForBoth: Bool, completion: @escaping ((_ isMessageDeleted: Bool) -> Void)){
         let parameters = ["messageId": messageId,
-                          "userId": userId]
+                          "userId": userId,
+                          "shouldDeleteForBoth": shouldDeleteForBoth] as [String : Any]
         AF.request(baseurl_messages, method: .put, parameters: parameters, headers: headers).responseJSON { (response) in
             switch response.result {
             case .success:
@@ -151,8 +152,8 @@ class APIService {
         }
     }
     
-    func clearAllMessages(userId: String, completion: @escaping ((_ isMessageDeleted: Bool) -> Void)){
-        let parameters = ["userId": userId]
+    func clearAllMessages(userId: String, shouldDeleteForBoth: Bool, completion: @escaping ((_ isMessageDeleted: Bool) -> Void)){
+        let parameters = ["userId": userId, "shouldDeleteForBoth": shouldDeleteForBoth] as [String : Any]
         AF.request(baseurl_messages_clear, method: .delete, parameters: parameters, headers: headers).responseJSON { (response) in
             switch response.result {
             case .success:

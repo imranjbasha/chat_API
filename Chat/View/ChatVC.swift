@@ -65,12 +65,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         case 2:
             self.navigationController?.popToRootViewController(animated: true)
         case 3:
-            if clearView.isHidden {
-                clearView.setCornerRadius(value: 10.0)
-                clearView.isHidden = false
-            }else{
-                clearView.isHidden = true
-            }
+            showClearAllAlert()
         case 4:
             largerView.isHidden =  true
             largerScrollView.minimumZoomScale = 1.0
@@ -81,12 +76,6 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         case 6:
             //gallery
             openGallery()
-        case 7:
-            let deleteVM = DeleteChatViewModel(messageId: "", type: ChatDeleteType.all, userId: friendId ?? "")
-            deleteVM.isClearedAll = {
-                self.clearView.isHidden = true
-                self.loadChatList()
-            }
         default:
             print("default")
         }
@@ -194,12 +183,12 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     func showDeleteAlert(message: Message){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let deleteForMe = UIAlertAction(title: "Delete for me", style: .default) { (action) in
-            self.deleteMessageForMe(message: message)
+        let deleteForMe = UIAlertAction(title: "Delete for me", style: .destructive) { (action) in
+            self.deleteMessage(message: message, shouldDeleteForBoth: false)
         }
         
-        let deleteForAll = UIAlertAction(title: "Delete for everyone", style: .default) { (action) in
-            self.deleteMessageForMe(message: message)
+        let deleteForAll = UIAlertAction(title: "Delete for all", style: .destructive) { (action) in
+            self.deleteMessage(message: message, shouldDeleteForBoth: true)
         }
 
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -209,12 +198,36 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         self.navigationController!.present(alertController, animated: true, completion: nil)
     }
     
-    func deleteMessageForMe(message: Message){
+    func showClearAllAlert(){
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deleteForMe = UIAlertAction(title: "Clear for me", style: .destructive) { (action) in
+            self.clearAll(shouldDeleteForBoth: false)
+        }
+        
+        let deleteForAll = UIAlertAction(title: "Clear for all", style: .destructive) { (action) in
+            self.clearAll(shouldDeleteForBoth: true)
+        }
+
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(deleteForMe)
+        alertController.addAction(deleteForAll)
+        alertController.addAction(cancel)
+        self.navigationController!.present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteMessage(message: Message, shouldDeleteForBoth: Bool){
         if let messageId = message._id, let friendId = friendId {
-        let deleteVM = DeleteChatViewModel(messageId: messageId, type: ChatDeleteType.single, userId: friendId)
+            let deleteVM = DeleteChatViewModel(messageId: messageId, type: ChatDeleteType.single, userId: friendId, shouldDeleteForBoth: shouldDeleteForBoth)
             deleteVM.isMessageDeleted = {
                 self.loadChatList()
             }
+        }
+    }
+    
+    func clearAll(shouldDeleteForBoth: Bool){
+        let deleteVM = DeleteChatViewModel(messageId: "", type: ChatDeleteType.all, userId: friendId ?? "", shouldDeleteForBoth: shouldDeleteForBoth)
+        deleteVM.isClearedAll = {
+            self.loadChatList()
         }
     }
     

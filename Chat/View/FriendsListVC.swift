@@ -94,21 +94,28 @@ class FriendsListVC: UIViewController {
         self.navigationController?.pushViewController(chatVC, animated: false)
     }
     
-    func showDeleteAlert(friend: Friend){
+    func showClearAllAlert(friend: Friend){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let deleteForMe = UIAlertAction(title: "Delete for me", style: .default) { (action) in
-            
+        let deleteForMe = UIAlertAction(title: "Clear for me", style: .destructive) { (action) in
+            self.clearAll(shouldDeleteForBoth: false, friend: friend)
         }
         
-        let deleteForAll = UIAlertAction(title: "Delete for everyone", style: .default) { (action) in
-            
+        let deleteForAll = UIAlertAction(title: "Clear for all", style: .destructive) { (action) in
+            self.clearAll(shouldDeleteForBoth: true, friend: friend)
         }
-        
+
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(deleteForMe)
         alertController.addAction(deleteForAll)
         alertController.addAction(cancel)
         self.navigationController!.present(alertController, animated: true, completion: nil)
+    }
+    
+    func clearAll(shouldDeleteForBoth: Bool, friend: Friend){
+        let deleteVM = DeleteChatViewModel(messageId: "", type: ChatDeleteType.all, userId: friend._id ?? "", shouldDeleteForBoth: shouldDeleteForBoth)
+        deleteVM.isClearedAll = {
+            self.updateUI()
+        }
     }
 }
 
@@ -171,10 +178,8 @@ extension FriendsListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            self.friendsList.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
             let friend = friendsList[indexPath.item]
-            showDeleteAlert(friend: friend)
+            showClearAllAlert(friend: friend)
         }
     }
 }
