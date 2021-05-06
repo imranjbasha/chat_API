@@ -7,6 +7,7 @@ target 'Chat' do
 
   pod 'Alamofire'
   pod 'SDWebImage'
+  pod "ImageSlideshow/SDWebImage"
   
   # Pods for Chat
 

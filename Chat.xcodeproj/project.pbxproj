@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032CF7912642FDE800B14911 /* MediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032CF7902642FDE800B14911 /* MediaVC.swift */; };
+		032CF7962643C91A00B14911 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032CF7952643C91A00B14911 /* MediaCell.swift */; };
 		0330FDE6264153F00074CB26 /* DeleteChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330FDE5264153F00074CB26 /* DeleteChatViewModel.swift */; };
 		035F5839262D5D7500BD280F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F5838262D5D7500BD280F /* AppDelegate.swift */; };
 		035F583B262D5D7500BD280F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F583A262D5D7500BD280F /* SceneDelegate.swift */; };
@@ -59,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		032CF7902642FDE800B14911 /* MediaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaVC.swift; sourceTree = "<group>"; };
+		032CF7952643C91A00B14911 /* MediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
 		0330FDE5264153F00074CB26 /* DeleteChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChatViewModel.swift; sourceTree = "<group>"; };
 		035F5835262D5D7400BD280F /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		035F5838262D5D7500BD280F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				035F5843262D5D7A00BD280F /* LaunchScreen.storyboard */,
 				035F5EC1262EDB9000BD280F /* ChatVC.swift */,
 				0397FFA7263B059A00E90021 /* FollowersVC.swift */,
+				032CF7902642FDE800B14911 /* MediaVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 			children = (
 				035F5885262D631000BD280F /* FriendListCell.swift */,
 				035F5EBC262EDAEF00BD280F /* ChatCell.swift */,
+				032CF7952643C91A00B14911 /* MediaCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -568,9 +574,11 @@
 				035F5EC2262EDB9000BD280F /* ChatVC.swift in Sources */,
 				03970068263D2F8A00E90021 /* UtilsClass.swift in Sources */,
 				035F583D262D5D7500BD280F /* FriendsListVC.swift in Sources */,
+				032CF7962643C91A00B14911 /* MediaCell.swift in Sources */,
 				035F5ECE262EEDD600BD280F /* MessagesViewModel.swift in Sources */,
 				0397FF152638278800E90021 /* Enums.swift in Sources */,
 				035F5EBD262EDAEF00BD280F /* ChatCell.swift in Sources */,
+				032CF7912642FDE800B14911 /* MediaVC.swift in Sources */,
 				035F5896262D88FF00BD280F /* APIService.swift in Sources */,
 				035F5839262D5D7500BD280F /* AppDelegate.swift in Sources */,
 				0397FFA8263B059E00E90021 /* FollowersVC.swift in Sources */,

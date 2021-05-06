@@ -81,6 +81,8 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    var medias: [String] = ["https://praja-uploads.s3.amazonaws.com/855CFE82-D991-496B-98E8-6B5968E3A618", "https://praja-uploads.s3.amazonaws.com/855CFE82-D991-496B-98E8-6B5968E3A618", "https://praja-uploads.s3.amazonaws.com/855CFE82-D991-496B-98E8-6B5968E3A618", "https://praja-uploads.s3.amazonaws.com/855CFE82-D991-496B-98E8-6B5968E3A618", "https://praja-uploads.s3.amazonaws.com/855CFE82-D991-496B-98E8-6B5968E3A618"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -157,7 +159,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     func showLargeImage(imageUrlString: String) {
         if let url = URL(string: imageUrlString) {
             largerView.isHidden = false
-            largerImageView.sd_setImage(with: url as URL , placeholderImage: nil)
+            largerImageView.sd_setImage(with: url as URL , placeholderImage: UIImage(named: AssetsName.icon_image_placeholder))
             largerScrollView.zoomScale = 1.0
         }
     }
@@ -284,9 +286,9 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
                 let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnImageCell", for: indexPath) as! ChatCell
                 let image = messageData.attachments
                 if image.count > 0 , let url = URL(string: image[0]) {
-                    cell.chatImage.sd_setImage(with: url as URL , placeholderImage: nil)
+                    cell.chatImage.sd_setImage(with: url as URL , placeholderImage: UIImage(named: AssetsName.icon_image_placeholder))
                 }else{
-                    cell.chatImage.image = UIImage(named: AssetsName.icon_default_chat_image)
+                    cell.chatImage.image = UIImage(named: AssetsName.icon_image_placeholder)
                 }
                 cell.chatImage.setCorner(value: 20.0)
                 cell.timeStamp.text =  UtilsClass.convertUTCtoLocal(date: messageData.timestamp ?? "")
@@ -313,7 +315,12 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
         let messageData = messages[indexPath.item]
         let images = messageData.attachments
         if (messageData.type == "media" || messageData.type == "document") && images.count > 0 {
-                self.showLargeImage(imageUrlString: images[0])
+//                self.showLargeImage(imageUrlString: images[0])
+            //
+            let mediaVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MediaVC") as! MediaVC
+            mediaVC.mediasUrlString = self.medias
+            present(mediaVC, animated: true, completion: nil)
+            //
         }
     }
     
