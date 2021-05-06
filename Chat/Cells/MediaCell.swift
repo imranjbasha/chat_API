@@ -13,8 +13,7 @@ class MediaCell: UICollectionViewCell {
     @IBOutlet weak var imageOuterView: UIView!
     
     @IBOutlet weak var mediaImage: UIImageView!
-    
-    
+        
     @IBOutlet weak var videoPlayerView: UIView!
     
 }

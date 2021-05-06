@@ -17,14 +17,14 @@ class ChatViewModel: NSObject {
         
         var isChatSent : (() -> ()) = {}
         
-    init(userId: String, message: String, type: ChatType, file: Data, fileName: String) {
+    init(userId: String, message: String, type: ChatType, files: [Media] = [], fileName: String = "") {
         super.init()
         apiService =  APIService()
         switch type {
             case .document:
                 print("document message")
             case .media:
-                callFuncToSendMediaMessage(userId: userId, message: message, imageData: file, fileName: fileName)
+                callFuncToSendMediaMessage(userId: userId, message: message, files: files, fileName: fileName)
                 
             case .text:
                 callFuncToSendTextMessage(userId: userId, message: message)
@@ -40,8 +40,8 @@ class ChatViewModel: NSObject {
             }
         }
     
-    func callFuncToSendMediaMessage(userId: String, message: String, imageData: Data, fileName: String){
-        apiService.sendMediaMessage(userId: userId, message: message, imageData: imageData, fileName: fileName) { (isMediaSent) in
+    func callFuncToSendMediaMessage(userId: String, message: String, files: [Media], fileName: String){
+        apiService.sendMediaMessage(userId: userId, message: message, files: files, fileName: fileName) { (isMediaSent) in
             if isMediaSent {
                 self.isSent = "Media chat successfully sent"
                 self.apiService = nil

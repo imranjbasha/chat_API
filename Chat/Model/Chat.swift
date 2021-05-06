@@ -47,3 +47,8 @@ class Follow {
         self.title = title
     }
 }
+
+struct Media {
+    let mediaType: MediaType
+    let data: Data
+}

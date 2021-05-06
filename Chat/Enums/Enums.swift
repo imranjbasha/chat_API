@@ -17,3 +17,9 @@ enum ChatDeleteType {
     case single
     case all
 }
+
+enum MediaType {
+    case audio
+    case image
+    case video
+}

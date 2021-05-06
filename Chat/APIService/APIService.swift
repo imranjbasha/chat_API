@@ -109,22 +109,27 @@ class APIService {
         }
     }
     
-    func sendMediaMessage(userId: String, message: String,  imageData: Data, fileName: String, completion: @escaping ((_ isMediaSent: Bool) -> Void)){
+    func sendMediaMessage(userId: String, message: String,  files: [Media], fileName: String, completion: @escaping ((_ isMediaSent: Bool) -> Void)){
         let parameters = ["type": "media",
                           "userId": userId]
         AF.upload(multipartFormData: {multipartFormData in
-            multipartFormData.append(imageData, withName: "files", fileName: fileName, mimeType: "image/png")
+            for item in files {
+                let fileName = UUID().uuidString
+                switch item.mediaType {
+                case .image:
+                    let data = item.data
+                    multipartFormData.append(data, withName: "files", fileName: fileName+".png", mimeType: "image/png")
+                case .video:
+                    let data = item.data
+                    multipartFormData.append(data, withName: "files", fileName: fileName+".mp4", mimeType: "mp4")
+                case .audio:
+                    print("audio...")
+                }
+            }
 
             for (key, value) in parameters{
                 multipartFormData.append((value).data(using: String.Encoding.utf8)!, withName: key)
             }
-          /*  for i in 0..<self.fileUrl.count{
-                let cArrArray = "\(self.fileUrl[i])".components(separatedBy: ".")
-                let mimeType = self.returnMimeType(fileExtension: cArrArray[i])
-                let pngData = self.imageData[i].pngData()
-                multipartFormData.append(pngData!, withName: "files", fileName: "\(self.fileUrl[i])", mimeType: mimeType)
-            } */
-          
         }, to: baseurl_chat_attachments, method: .post, headers: headers).uploadProgress{ progress in
 
         }.response{ response in

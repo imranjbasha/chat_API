@@ -7,6 +7,8 @@
 
 import UIKit
 import SDWebImage
+import OpalImagePicker
+import Photos
 
 class ChatVC: UIViewController, UINavigationControllerDelegate {
     
@@ -46,6 +48,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         
     var friendsVC :FriendsListVC?
 
+    var attatchments: [Media] = []
 
     @IBOutlet weak var tfChat: UITextField!
     
@@ -147,7 +150,7 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
             self.view.showProgress(spinner: spinner)
             let image = UIImage(named: "icon_back")
             if let data = image?.pngData() {
-                let chatViewModel = ChatViewModel(userId: friendId ?? "", message: message, type: .text, file: data, fileName: "")
+                let chatViewModel = ChatViewModel(userId: friendId ?? "", message: message, type: .text)
                 chatViewModel.isChatSent = {
                     self.tfChat.text = ""
                     self.loadChatList()
@@ -175,13 +178,77 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     }
     
     func openGallery(){
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
-        imagePicker.mediaTypes = ["public.image"]
-        present(imagePicker, animated: true, completion: nil)
+        let imagePicker = OpalImagePickerController()
+        imagePicker.maximumSelectionsAllowed = 5
+        presentOpalImagePickerController(imagePicker, animated: true,
+            select: { (assets) in
+                self.attatchments.removeAll()
+                let group = DispatchGroup()
+                for asset in assets {
+                    group.enter()
+                    switch asset.mediaType {
+                    case .image:
+                        print("image")
+                            let image = self.getImageFromAsset(asset: asset)
+                            guard let data = image.pngData() else { return }
+                            let media = Media(mediaType: .image, data: data)
+                            self.attatchments.append(media)
+                            group.leave()
+                    case .video:
+                        print("video")
+                            PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { (asset, audioMix, info) in
+                                guard let asset = asset as? AVURLAsset, let data = try? Data(contentsOf: asset.url) else {
+                                    group.leave()
+                                    return
+                                }
+                                let media = Media(mediaType: .video, data: data)
+                                self.attatchments.append(media)
+                                group.leave()
+                              }
+                    case .unknown:
+                        group.leave()
+                        return
+                    case .audio:
+                        group.leave()
+                        return
+                    @unknown default:
+                        group.leave()
+                        return
+                    }
+                }
+                group.notify(queue: .main) {
+                    imagePicker.dismiss(animated: true) {
+                        let chatVM = ChatViewModel(userId: self.friendId ?? "", message: "", type: .media, files: self.attatchments)
+                        chatVM.isChatSent = {
+                            self.loadChatList()
+                            }
+
+                    }
+                }
+                //Select Assets
+            }, cancel: {
+                self.attatchments.removeAll()
+                imagePicker.dismiss(animated: true, completion: nil)
+            })
+        
+        
     }
+    
+    func getImageFromAsset(asset: PHAsset) -> UIImage {
+        let options = PHImageRequestOptions()
+        var thumbnail = UIImage()
+        
+        options.isSynchronous = true
+        
+        PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: options, resultHandler: {(result, info)->Void in
+            if let result = result {
+                thumbnail = result
+            }
+        })
+        
+        return thumbnail
+    }
+    
     
     func showDeleteAlert(message: Message){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -342,7 +409,9 @@ extension ChatVC: UIImagePickerControllerDelegate {
             fileName = absoluteString
         }
         if let imageData = image.pngData() {
-            let chatVM = ChatViewModel(userId: friendId ?? "", message: "", type: .media, file: imageData, fileName: fileName)
+            let media = Media(mediaType: .image, data: imageData)
+            let file = [media]
+            let chatVM = ChatViewModel(userId: friendId ?? "", message: "", type: .media, files: file, fileName: fileName)
             chatVM.isChatSent = {
                 self.loadChatList()
                 }
