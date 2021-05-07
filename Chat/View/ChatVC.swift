@@ -417,12 +417,65 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         }else{
-            let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! ChatCell
-            let message = messageData.message
-            cell.chatMessage.text = "\(message ?? "")    "
-            cell.textOuterView.setCornerRadius(value: 15.0)
-            cell.timeStamp.text = UtilsClass.convertUTCtoLocal(date: messageData.timestamp ?? "")
-            return cell
+            if messageData.type == "media" || messageData.type == "document" {
+                let image = messageData.attachments
+                if image.count > 1 {
+                    let cell =  tableView.dequeueReusableCell(withIdentifier: "MultiFriendImageCell", for: indexPath) as! ChatCell
+                    let urlString = image[0]
+                    if let url = URL(string: urlString) {
+                        cell.chatImage.sd_setImage(with: url as URL , placeholderImage: UIImage(named: AssetsName.icon_image_placeholder))
+                        if urlString.contains("mp4"){
+                            DispatchQueue.global().async {
+                                if let url = URL(string: urlString),let thumbnail = UtilsClass.getThumbnailImage(forUrl: url){
+                                    DispatchQueue.main.async {
+                                        cell.chatImage.image = thumbnail
+                                    }
+                                }
+                            }
+                        }
+                    }else{
+                        cell.chatImage.image = UIImage(named: AssetsName.icon_image_placeholder)
+                    }
+                    cell.attachementCount.text = "+\(image.count-1)"
+                    cell.chatImage.setCorner(value: 20.0)
+                    cell.countView.setCornerRadius(value: 20.0)
+                    cell.timeStamp.text =  UtilsClass.convertUTCtoLocal(date: messageData.timestamp ?? "")
+                    return cell
+                }else {
+                let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendImageCell", for: indexPath) as! ChatCell
+                if image.count > 0 , let url = URL(string: image[0]) {
+                    let urlString = image[0]
+                    cell.chatImage.sd_setImage(with: url as URL , placeholderImage: UIImage(named: AssetsName.icon_image_placeholder))
+                    if urlString.contains("mp4"){
+                        DispatchQueue.global().async {
+                            if let url = URL(string: urlString),let thumbnail = UtilsClass.getThumbnailImage(forUrl: url){
+                                DispatchQueue.main.async {
+                                    cell.chatImage.image = thumbnail
+                                    cell.videoPlayerView.setCornerRadius(value: 30.0)
+                                    cell.videoPlayerView.setBorder(color: .black, width: 1.0)
+                                    cell.videoPlayerView.isHidden = false
+                                }
+                            }
+                        }
+                    }else{
+                        cell.videoPlayerView.isHidden = true
+                    }
+                }else{
+                    cell.videoPlayerView.isHidden = true
+                    cell.chatImage.image = UIImage(named: AssetsName.icon_image_placeholder)
+                }
+                cell.chatImage.setCorner(value: 20.0)
+                cell.timeStamp.text =  UtilsClass.convertUTCtoLocal(date: messageData.timestamp ?? "")
+                return cell
+                }
+            }else{
+                let cell =  tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! ChatCell
+                let message = messageData.message
+                cell.chatMessage.text = "\(message ?? "")    "
+                cell.textOuterView.setCornerRadius(value: 15.0)
+                cell.timeStamp.text = UtilsClass.convertUTCtoLocal(date: messageData.timestamp ?? "")
+                return cell
+            }
         }
     }
     
