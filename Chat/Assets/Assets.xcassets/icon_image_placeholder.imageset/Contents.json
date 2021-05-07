@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-full-image-80.png",
+      "filename" : "icons8-ios-application-placeholder-100@3x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-full-image-80@2x.png",
+      "filename" : "icons8-ios-application-placeholder-100@3x-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-full-image-80@3x.png",
+      "filename" : "icons8-ios-application-placeholder-100@3x-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
