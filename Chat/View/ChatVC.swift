@@ -9,6 +9,8 @@ import UIKit
 import SDWebImage
 import OpalImagePicker
 import Photos
+import AVFoundation
+import AVKit
 
 class ChatVC: UIViewController, UINavigationControllerDelegate {
     
@@ -163,6 +165,14 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
             largerImageView.sd_setImage(with: url as URL , placeholderImage: UIImage(named: AssetsName.icon_image_placeholder))
             largerScrollView.zoomScale = 1.0
         }
+    }
+    
+    func loadVideo(videoUrl: URL){
+            let avPlayer = AVPlayer(url: videoUrl)
+            let avController = AVPlayerViewController()
+            avController.player = avPlayer
+            avPlayer.play()
+            present(avController, animated: true, completion: nil)
     }
     
     func openCamera(){
@@ -351,8 +361,18 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
                 let image = messageData.attachments
                 if image.count > 1 {
                     let cell =  tableView.dequeueReusableCell(withIdentifier: "MultiOwnImageCell", for: indexPath) as! ChatCell
-                    if let url = URL(string: image[0]) {
+                    let urlString = image[0]
+                    if let url = URL(string: urlString) {
                         cell.chatImage.sd_setImage(with: url as URL , placeholderImage: UIImage(named: AssetsName.icon_image_placeholder))
+                        if urlString.contains("mp4"){
+                            DispatchQueue.global().async {
+                                if let url = URL(string: urlString),let thumbnail = UtilsClass.getThumbnailImage(forUrl: url){
+                                    DispatchQueue.main.async {
+                                        cell.chatImage.image = thumbnail
+                                    }
+                                }
+                            }
+                        }
                     }else{
                         cell.chatImage.image = UIImage(named: AssetsName.icon_image_placeholder)
                     }
@@ -364,8 +384,24 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
                 }else {
                 let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnImageCell", for: indexPath) as! ChatCell
                 if image.count > 0 , let url = URL(string: image[0]) {
+                    let urlString = image[0]
                     cell.chatImage.sd_setImage(with: url as URL , placeholderImage: UIImage(named: AssetsName.icon_image_placeholder))
+                    if urlString.contains("mp4"){
+                        DispatchQueue.global().async {
+                            if let url = URL(string: urlString),let thumbnail = UtilsClass.getThumbnailImage(forUrl: url){
+                                DispatchQueue.main.async {
+                                    cell.chatImage.image = thumbnail
+                                    cell.videoPlayerView.setCornerRadius(value: 30.0)
+                                    cell.videoPlayerView.setBorder(color: .black, width: 1.0)
+                                    cell.videoPlayerView.isHidden = false
+                                }
+                            }
+                        }
+                    }else{
+                        cell.videoPlayerView.isHidden = true
+                    }
                 }else{
+                    cell.videoPlayerView.isHidden = true
                     cell.chatImage.image = UIImage(named: AssetsName.icon_image_placeholder)
                 }
                 cell.chatImage.setCorner(value: 20.0)
@@ -394,7 +430,14 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
         let messageData = messages[indexPath.item]
         let images = messageData.attachments
         if (messageData.type == "media" || messageData.type == "document") && images.count == 1 {
-                self.showLargeImage(imageUrlString: images[0])
+            let media = images[0]
+            if media.contains("mp4"){
+                if let url = URL(string: media){
+                    self.loadVideo(videoUrl: url)
+                }
+            }else{
+                self.showLargeImage(imageUrlString: media)
+            }
         }else if images.count > 1 {
             let mediaVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MediaVC") as! MediaVC
             mediaVC.mediasUrlString = images

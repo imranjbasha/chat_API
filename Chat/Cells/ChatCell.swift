@@ -23,6 +23,8 @@ class ChatCell: UITableViewCell {
     
     @IBOutlet weak var countView: UIView!
     
+    @IBOutlet weak var videoPlayerView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

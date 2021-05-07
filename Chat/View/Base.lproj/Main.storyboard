@@ -555,14 +555,35 @@
                                                                 <constraint firstAttribute="width" constant="18" id="NH6-aV-Pke"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeT-he-JbG">
+                                                            <rect key="frame" x="82.5" y="82.5" width="60" height="60"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_triangle" translatesAutoresizingMaskIntoConstraints="NO" id="EpX-Bm-lAt">
+                                                                    <rect key="frame" x="15" y="15" width="30" height="30"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="8Tq-ZH-H7h"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="cTZ-Y9-2mW"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="EpX-Bm-lAt" firstAttribute="centerY" secondItem="zeT-he-JbG" secondAttribute="centerY" id="CaB-hN-XTc"/>
+                                                                <constraint firstAttribute="width" constant="60" id="Cze-VJ-CIa"/>
+                                                                <constraint firstItem="EpX-Bm-lAt" firstAttribute="centerX" secondItem="zeT-he-JbG" secondAttribute="centerX" id="kQR-dz-izi"/>
+                                                                <constraint firstAttribute="height" constant="60" id="vbr-Xj-8vs"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="JPA-FD-j6b" firstAttribute="leading" secondItem="E7K-94-y6f" secondAttribute="trailing" constant="5" id="06N-Yk-WQN"/>
+                                                        <constraint firstItem="zeT-he-JbG" firstAttribute="centerX" secondItem="MKZ-3m-erN" secondAttribute="centerX" id="HPS-hD-Rc5"/>
                                                         <constraint firstAttribute="bottom" secondItem="JPA-FD-j6b" secondAttribute="bottom" constant="5" id="Lke-6z-RBM"/>
                                                         <constraint firstItem="E7K-94-y6f" firstAttribute="centerY" secondItem="JPA-FD-j6b" secondAttribute="centerY" id="MnV-a9-Tl0"/>
                                                         <constraint firstItem="SFz-0Y-d8p" firstAttribute="top" secondItem="MKZ-3m-erN" secondAttribute="top" id="aDc-GN-kbS"/>
                                                         <constraint firstAttribute="bottom" secondItem="SFz-0Y-d8p" secondAttribute="bottom" id="aPw-uZ-LA2"/>
+                                                        <constraint firstItem="zeT-he-JbG" firstAttribute="centerY" secondItem="MKZ-3m-erN" secondAttribute="centerY" id="cO7-5c-KOd"/>
                                                         <constraint firstItem="SFz-0Y-d8p" firstAttribute="centerY" secondItem="MKZ-3m-erN" secondAttribute="centerY" id="dKp-Vk-kZH"/>
                                                         <constraint firstAttribute="trailing" secondItem="SFz-0Y-d8p" secondAttribute="trailing" id="jEN-j0-fQt"/>
                                                         <constraint firstAttribute="trailing" secondItem="JPA-FD-j6b" secondAttribute="trailing" constant="10" id="jcP-d7-GiE"/>
@@ -581,6 +602,7 @@
                                         <connections>
                                             <outlet property="chatImage" destination="SFz-0Y-d8p" id="V7D-Xr-anx"/>
                                             <outlet property="timeStamp" destination="E7K-94-y6f" id="FLW-HH-aji"/>
+                                            <outlet property="videoPlayerView" destination="zeT-he-JbG" id="o7J-pN-i5M"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FriendImageCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FriendImageCell" id="ZCy-xN-KGt" userLabel="FriendImageCell" customClass="ChatCell" customModule="Chat" customModuleProvider="target">
@@ -601,21 +623,43 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11.45 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTs-Lt-y4D">
-                                                            <rect key="frame" x="171.5" y="208" width="43.5" height="12"/>
+                                                            <rect key="frame" x="10" y="208" width="205" height="12"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzb-cb-j5l">
+                                                            <rect key="frame" x="82.5" y="82.5" width="60" height="60"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_triangle" translatesAutoresizingMaskIntoConstraints="NO" id="arf-di-Wpi">
+                                                                    <rect key="frame" x="15" y="15" width="30" height="30"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="QGC-kF-ssK"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="UaP-ea-E6U"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="60" id="M71-ha-Dtf"/>
+                                                                <constraint firstItem="arf-di-Wpi" firstAttribute="centerX" secondItem="lzb-cb-j5l" secondAttribute="centerX" id="Z52-op-OsL"/>
+                                                                <constraint firstItem="arf-di-Wpi" firstAttribute="centerY" secondItem="lzb-cb-j5l" secondAttribute="centerY" id="sWJ-yL-bbZ"/>
+                                                                <constraint firstAttribute="height" constant="60" id="u84-Zd-HVd"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="79X-AF-s05" firstAttribute="top" secondItem="oTP-kj-5rq" secondAttribute="top" id="M78-RW-cob"/>
                                                         <constraint firstAttribute="trailing" secondItem="oTs-Lt-y4D" secondAttribute="trailing" constant="10" id="P6f-it-Adm"/>
+                                                        <constraint firstItem="lzb-cb-j5l" firstAttribute="centerY" secondItem="oTP-kj-5rq" secondAttribute="centerY" id="TL3-Ja-uTh"/>
+                                                        <constraint firstItem="oTs-Lt-y4D" firstAttribute="centerX" secondItem="oTP-kj-5rq" secondAttribute="centerX" id="WEm-3T-DOL"/>
                                                         <constraint firstItem="79X-AF-s05" firstAttribute="leading" secondItem="oTP-kj-5rq" secondAttribute="leading" id="Xvh-bp-HeS"/>
                                                         <constraint firstAttribute="bottom" secondItem="oTs-Lt-y4D" secondAttribute="bottom" constant="5" id="ZLr-Jd-Jgn"/>
                                                         <constraint firstItem="79X-AF-s05" firstAttribute="centerY" secondItem="oTP-kj-5rq" secondAttribute="centerY" id="s2H-7I-qU8"/>
                                                         <constraint firstAttribute="bottom" secondItem="79X-AF-s05" secondAttribute="bottom" id="uZu-af-gac"/>
+                                                        <constraint firstItem="lzb-cb-j5l" firstAttribute="centerX" secondItem="oTP-kj-5rq" secondAttribute="centerX" id="vt1-y6-KIg"/>
                                                         <constraint firstAttribute="trailing" secondItem="79X-AF-s05" secondAttribute="trailing" id="xaA-pP-qBb"/>
                                                     </constraints>
                                                 </view>
@@ -631,6 +675,7 @@
                                         <connections>
                                             <outlet property="chatImage" destination="79X-AF-s05" id="vdA-FW-dhl"/>
                                             <outlet property="timeStamp" destination="oTs-Lt-y4D" id="cr2-TU-nzj"/>
+                                            <outlet property="videoPlayerView" destination="lzb-cb-j5l" id="bCW-1z-bRF"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="OwnCell" id="1Dv-XW-JdP" customClass="ChatCell" customModule="Chat" customModuleProvider="target">

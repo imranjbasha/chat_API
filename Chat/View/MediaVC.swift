@@ -63,6 +63,14 @@ extension MediaVC: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.videoPlayerView.setCornerRadius(value: 30.0)
             cell.videoPlayerView.setBorder(color: .black, width: 1.0)
             cell.videoPlayerView.isHidden = false
+            DispatchQueue.global().async {
+                if let url = URL(string: media),let thumbnail = UtilsClass.getThumbnailImage(forUrl: url){
+                    DispatchQueue.main.async {
+                        cell.mediaImage.image = thumbnail
+                    }
+                }
+            }
+            
         }else{
             cell.videoPlayerView.isHidden = true
         }
