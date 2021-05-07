@@ -871,7 +871,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0jK-UX-YuI">
-                                <rect key="frame" x="0.0" y="140" width="414" height="706"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="666"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Pss-Ib-kPE">
                                     <rect key="frame" x="0.0" y="198" width="414" height="44"/>
@@ -996,6 +996,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8U-CY-p6v">
+                                <rect key="frame" x="0.0" y="816" width="414" height="80"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_chat_bottom_design" translatesAutoresizingMaskIntoConstraints="NO" id="Xg8-6z-Unb">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Xg8-6z-Unb" firstAttribute="top" secondItem="c8U-CY-p6v" secondAttribute="top" id="4nF-qF-urJ"/>
+                                    <constraint firstAttribute="height" constant="80" id="XXb-En-vX5"/>
+                                    <constraint firstItem="Xg8-6z-Unb" firstAttribute="leading" secondItem="c8U-CY-p6v" secondAttribute="leading" id="Y8p-se-zt9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xg8-6z-Unb" secondAttribute="trailing" id="bV6-vs-5I2"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xg8-6z-Unb" secondAttribute="bottom" id="kiA-Vf-iuE"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOv-SB-8XB">
                                 <rect key="frame" x="0.0" y="70" width="414" height="60"/>
                                 <subviews>
@@ -1030,10 +1046,10 @@
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWn-5c-jEM">
-                                <rect key="frame" x="294" y="712" width="50" height="50"/>
+                                <rect key="frame" x="177" y="782" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="ZNf-xQ-eTF"/>
-                                    <constraint firstAttribute="height" constant="50" id="uAE-4R-oQS"/>
+                                    <constraint firstAttribute="width" constant="60" id="LK7-GD-HbK"/>
+                                    <constraint firstAttribute="height" constant="60" id="kMj-ln-cf4"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="icon_add_chat">
                                     <color key="titleColor" red="0.1137254902" green="0.17254901959999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1048,17 +1064,20 @@
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="hEi-L5-rdi" secondAttribute="bottom" id="8in-6k-vJ7"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="RWn-5c-jEM" secondAttribute="bottom" constant="20" id="BRl-SS-Izp"/>
                             <constraint firstItem="0jK-UX-YuI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BwE-tL-4dO"/>
                             <constraint firstItem="0jK-UX-YuI" firstAttribute="top" secondItem="iOv-SB-8XB" secondAttribute="bottom" constant="10" id="Dbr-WA-IvO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RWn-5c-jEM" secondAttribute="trailing" constant="50" id="J3y-0E-Wma"/>
+                            <constraint firstItem="c8U-CY-p6v" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jqc-VK-y7p"/>
                             <constraint firstAttribute="trailing" secondItem="0jK-UX-YuI" secondAttribute="trailing" id="KuE-oV-JlZ"/>
                             <constraint firstItem="0jK-UX-YuI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="140" id="TKY-Vo-l5B"/>
                             <constraint firstItem="iOv-SB-8XB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="X2h-pT-oXG"/>
+                            <constraint firstAttribute="trailing" secondItem="c8U-CY-p6v" secondAttribute="trailing" id="XLW-5V-gtQ"/>
                             <constraint firstAttribute="trailing" secondItem="iOv-SB-8XB" secondAttribute="trailing" id="aYs-V9-fam"/>
                             <constraint firstAttribute="trailing" secondItem="hEi-L5-rdi" secondAttribute="trailing" id="csZ-G1-v7C"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="RWn-5c-jEM" secondAttribute="bottom" constant="100" id="jNi-vQ-N3b"/>
+                            <constraint firstItem="RWn-5c-jEM" firstAttribute="centerX" secondItem="c8U-CY-p6v" secondAttribute="centerX" id="dOp-Uq-FiX"/>
+                            <constraint firstAttribute="bottom" secondItem="c8U-CY-p6v" secondAttribute="bottom" id="rUw-0B-JWg"/>
                             <constraint firstItem="hEi-L5-rdi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wpc-a9-Xey"/>
-                            <constraint firstAttribute="bottom" secondItem="0jK-UX-YuI" secondAttribute="bottom" constant="50" id="y5d-tH-H9C"/>
+                            <constraint firstItem="c8U-CY-p6v" firstAttribute="top" secondItem="0jK-UX-YuI" secondAttribute="bottom" constant="10" id="zIh-AO-7QY"/>
                             <constraint firstItem="hEi-L5-rdi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zap-vw-4DF"/>
                         </constraints>
                     </view>
@@ -1227,6 +1246,7 @@
         <image name="icon_background" width="756" height="1008"/>
         <image name="icon_camera" width="25" height="25"/>
         <image name="icon_chat" width="25" height="25"/>
+        <image name="icon_chat_bottom_design" width="533" height="94"/>
         <image name="icon_chat_send" width="22.5" height="22.5"/>
         <image name="icon_close" width="24" height="24"/>
         <image name="icon_double_tick" width="30" height="30"/>
