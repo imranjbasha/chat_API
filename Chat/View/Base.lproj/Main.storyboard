@@ -1002,6 +1002,14 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_chat_bottom_design" translatesAutoresizingMaskIntoConstraints="NO" id="Xg8-6z-Unb">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtg-md-c7x">
+                                        <rect key="frame" x="354" y="27.5" width="30" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="I7H-jq-O96"/>
+                                            <constraint firstAttribute="width" constant="30" id="QRN-0W-mG4"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="icon_profile_white"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1009,7 +1017,9 @@
                                     <constraint firstAttribute="height" constant="80" id="XXb-En-vX5"/>
                                     <constraint firstItem="Xg8-6z-Unb" firstAttribute="leading" secondItem="c8U-CY-p6v" secondAttribute="leading" id="Y8p-se-zt9"/>
                                     <constraint firstAttribute="trailing" secondItem="Xg8-6z-Unb" secondAttribute="trailing" id="bV6-vs-5I2"/>
+                                    <constraint firstAttribute="trailing" secondItem="jtg-md-c7x" secondAttribute="trailing" constant="30" id="jke-oH-D4z"/>
                                     <constraint firstAttribute="bottom" secondItem="Xg8-6z-Unb" secondAttribute="bottom" id="kiA-Vf-iuE"/>
+                                    <constraint firstItem="jtg-md-c7x" firstAttribute="centerY" secondItem="c8U-CY-p6v" secondAttribute="centerY" id="myS-wX-aTW"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOv-SB-8XB">
@@ -1246,12 +1256,13 @@
         <image name="icon_background" width="756" height="1008"/>
         <image name="icon_camera" width="25" height="25"/>
         <image name="icon_chat" width="25" height="25"/>
-        <image name="icon_chat_bottom_design" width="533" height="94"/>
+        <image name="icon_chat_bottom_design" width="533" height="94.5"/>
         <image name="icon_chat_send" width="22.5" height="22.5"/>
         <image name="icon_close" width="24" height="24"/>
         <image name="icon_double_tick" width="30" height="30"/>
         <image name="icon_gallery" width="24" height="24"/>
         <image name="icon_image_placeholder" width="20" height="20"/>
+        <image name="icon_profile_white" width="73.5" height="59"/>
         <image name="icon_right_arrow" width="22.5" height="22.5"/>
         <image name="icon_search" width="25" height="25"/>
         <image name="icon_triangle" width="25" height="25"/>

@@ -7,6 +7,8 @@
 
 import UIKit
 import SDWebImage
+import AVFoundation
+import AVKit
 
 class MediaVC: UIViewController {
     
@@ -26,6 +28,14 @@ class MediaVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    func loadVideo(videoUrl: URL){
+            let avPlayer = AVPlayer(url: videoUrl)
+            let avController = AVPlayerViewController()
+            avController.player = avPlayer
+            avPlayer.play()
+            present(avController, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
@@ -49,14 +59,24 @@ extension MediaVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MediaCell", for: indexPath) as! MediaCell
         cell.mediaImage.sd_setImage(with: URL(string: media), placeholderImage: UIImage(named: AssetsName.icon_image_placeholder))
         cell.imageOuterView.setCornerRadius(value: 15.0)
-        cell.videoPlayerView.setCornerRadius(value: 30.0)
-        cell.videoPlayerView.setBorder(color: .black, width: 3.0)
-        cell.videoPlayerView.isHidden = false
+        if media.contains("mp4"){
+            cell.videoPlayerView.setCornerRadius(value: 30.0)
+            cell.videoPlayerView.setBorder(color: .black, width: 1.0)
+            cell.videoPlayerView.isHidden = false
+        }else{
+            cell.videoPlayerView.isHidden = true
+        }
+        
         return  cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("image tapped....")
+        let media = self.mediasUrlString[indexPath.item]
+        if media.contains("mp4"){
+            if let url = URL(string: media){
+                self.loadVideo(videoUrl: url)
+            }
+        }
     }
     
     
