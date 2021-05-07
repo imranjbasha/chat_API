@@ -17,7 +17,12 @@ class ChatCell: UITableViewCell {
     @IBOutlet weak var timeStamp: UILabel!
     
     @IBOutlet weak var textOuterView: UIView!
-        
+    
+    
+    @IBOutlet weak var attachementCount: UILabel!
+    
+    @IBOutlet weak var countView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

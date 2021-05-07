@@ -84,8 +84,6 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-    var medias: [String] = ["https://praja-uploads.s3.amazonaws.com/855CFE82-D991-496B-98E8-6B5968E3A618", "https://praja-uploads.s3.amazonaws.com/855CFE82-D991-496B-98E8-6B5968E3A618", "https://praja-uploads.s3.amazonaws.com/855CFE82-D991-496B-98E8-6B5968E3A618", "https://praja-uploads.s3.amazonaws.com/855CFE82-D991-496B-98E8-6B5968E3A618", "https://praja-uploads.s3.amazonaws.com/855CFE82-D991-496B-98E8-6B5968E3A618"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -350,8 +348,21 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
         let messageData = messages[indexPath.item]
         if messageData.to == friendId {
             if messageData.type == "media" || messageData.type == "document" {
-                let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnImageCell", for: indexPath) as! ChatCell
                 let image = messageData.attachments
+                if image.count > 1 {
+                    let cell =  tableView.dequeueReusableCell(withIdentifier: "MultiOwnImageCell", for: indexPath) as! ChatCell
+                    if let url = URL(string: image[0]) {
+                        cell.chatImage.sd_setImage(with: url as URL , placeholderImage: UIImage(named: AssetsName.icon_image_placeholder))
+                    }else{
+                        cell.chatImage.image = UIImage(named: AssetsName.icon_image_placeholder)
+                    }
+                    cell.attachementCount.text = "+\(image.count-1)"
+                    cell.chatImage.setCorner(value: 20.0)
+                    cell.countView.setCornerRadius(value: 20.0)
+                    cell.timeStamp.text =  UtilsClass.convertUTCtoLocal(date: messageData.timestamp ?? "")
+                    return cell
+                }else {
+                let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnImageCell", for: indexPath) as! ChatCell
                 if image.count > 0 , let url = URL(string: image[0]) {
                     cell.chatImage.sd_setImage(with: url as URL , placeholderImage: UIImage(named: AssetsName.icon_image_placeholder))
                 }else{
@@ -360,6 +371,7 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
                 cell.chatImage.setCorner(value: 20.0)
                 cell.timeStamp.text =  UtilsClass.convertUTCtoLocal(date: messageData.timestamp ?? "")
                 return cell
+                }
             }else{
                 let cell =  tableView.dequeueReusableCell(withIdentifier: "OwnCell", for: indexPath) as! ChatCell
                 let message = messageData.message
@@ -381,13 +393,12 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let messageData = messages[indexPath.item]
         let images = messageData.attachments
-        if (messageData.type == "media" || messageData.type == "document") && images.count > 0 {
-//                self.showLargeImage(imageUrlString: images[0])
-            //
+        if (messageData.type == "media" || messageData.type == "document") && images.count == 1 {
+                self.showLargeImage(imageUrlString: images[0])
+        }else if images.count > 1 {
             let mediaVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MediaVC") as! MediaVC
-            mediaVC.mediasUrlString = self.medias
+            mediaVC.mediasUrlString = images
             present(mediaVC, animated: true, completion: nil)
-            //
         }
     }
     
