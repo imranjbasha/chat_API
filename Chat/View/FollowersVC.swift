@@ -89,6 +89,8 @@ extension FollowersVC: UITableViewDelegate, UITableViewDataSource {
             }
             cell.ivFriendProfile.maskCircle(image: image!)
             cell.friendName.text = "\(friend.firstName ?? "") \(friend.lastName ?? "")"
+            cell.followFriendView.setCornerRadius(value: 15.0)
+            cell.followFriendView.setBorder(color: .lightGray, width: 1.0)
             cell.chatRequestBtn.roundedButton()
             let tapGesture = CustomTapGestureRecognizer(target: self, action: #selector(FollowersVC.chatButtonPressed))
             tapGesture.friend = friend

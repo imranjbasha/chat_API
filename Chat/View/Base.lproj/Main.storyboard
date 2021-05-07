@@ -80,7 +80,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                             <constraints>
                                                                 <constraint firstItem="BXv-zB-2Fs" firstAttribute="centerY" secondItem="MaR-Yt-1eR" secondAttribute="centerY" id="ESj-9a-4mo"/>
                                                                 <constraint firstAttribute="bottom" secondItem="c2a-ks-rcJ" secondAttribute="bottom" constant="10" id="Fds-7b-GmU"/>
@@ -106,14 +106,14 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FriendListCell" id="GAe-cn-ocO" customClass="FriendListCell" customModule="Chat" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="108" width="414" height="100"/>
+                                                <rect key="frame" x="0.0" y="108" width="414" height="110"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GAe-cn-ocO" id="ybz-5i-kLe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYj-vc-Guv">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                                            <rect key="frame" x="5" y="5" width="404" height="100"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZWN-Fd-zVO">
                                                                     <rect key="frame" x="30" y="20" width="60" height="60"/>
@@ -123,7 +123,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gy-lh-7Yr">
-                                                                    <rect key="frame" x="349" y="32.5" width="35" height="35"/>
+                                                                    <rect key="frame" x="339" y="32.5" width="35" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="35" id="xi6-Kq-Qt9"/>
                                                                         <constraint firstAttribute="width" constant="35" id="xxJ-Xe-w9l"/>
@@ -131,7 +131,7 @@
                                                                     <state key="normal" backgroundImage="icon_chat"/>
                                                                 </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4O-iX-DBl">
-                                                                    <rect key="frame" x="285" y="25" width="119" height="50"/>
+                                                                    <rect key="frame" x="275" y="25" width="119" height="50"/>
                                                                     <color key="backgroundColor" red="0.1137254902" green="0.17254901959999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="50" id="eVg-0x-fVS"/>
@@ -151,14 +151,14 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGR-zS-qwp">
-                                                                    <rect key="frame" x="0.0" y="99" width="414" height="1"/>
+                                                                    <rect key="frame" x="0.0" y="99" width="404" height="1"/>
                                                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="1" id="QTm-mN-adl"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="ZWN-Fd-zVO" firstAttribute="centerY" secondItem="BYj-vc-Guv" secondAttribute="centerY" id="1rp-ob-JJu"/>
                                                                 <constraint firstItem="2gy-lh-7Yr" firstAttribute="centerY" secondItem="BYj-vc-Guv" secondAttribute="centerY" id="EVO-SF-7nd"/>
@@ -177,16 +177,17 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="BYj-vc-Guv" secondAttribute="bottom" id="18d-I8-6LD"/>
-                                                        <constraint firstItem="BYj-vc-Guv" firstAttribute="leading" secondItem="ybz-5i-kLe" secondAttribute="leading" id="Iwf-9G-nrv"/>
-                                                        <constraint firstItem="BYj-vc-Guv" firstAttribute="top" secondItem="ybz-5i-kLe" secondAttribute="top" id="XLi-YG-old"/>
-                                                        <constraint firstAttribute="trailing" secondItem="BYj-vc-Guv" secondAttribute="trailing" id="jtC-oz-07X"/>
+                                                        <constraint firstItem="BYj-vc-Guv" firstAttribute="top" secondItem="ybz-5i-kLe" secondAttribute="top" constant="5" id="5en-cc-JXW"/>
+                                                        <constraint firstAttribute="bottom" secondItem="BYj-vc-Guv" secondAttribute="bottom" constant="5" id="ISY-QC-Kj4"/>
+                                                        <constraint firstItem="BYj-vc-Guv" firstAttribute="leading" secondItem="ybz-5i-kLe" secondAttribute="leading" constant="5" id="Irx-eV-egS"/>
+                                                        <constraint firstAttribute="trailing" secondItem="BYj-vc-Guv" secondAttribute="trailing" constant="5" id="uyi-gk-0Mb"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="chatBtn" destination="2gy-lh-7Yr" id="zGR-KD-sBo"/>
                                                     <outlet property="chatRequestBtn" destination="g4O-iX-DBl" id="Utu-AF-pgU"/>
+                                                    <outlet property="followFriendView" destination="BYj-vc-Guv" id="MF8-9P-KgC"/>
                                                     <outlet property="friendName" destination="g0R-n2-D5y" id="cNG-g6-vYT"/>
                                                     <outlet property="ivFriendProfile" destination="ZWN-Fd-zVO" id="eXb-BN-UfO"/>
                                                 </connections>
