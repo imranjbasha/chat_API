@@ -41,6 +41,9 @@ class FriendsListVC: UIViewController {
         tvChatFriendList.dataSource = self
         updateUI()
         fetchAndSaveFollow()
+        self.addBtn.layer.shadowOpacity = 0.3
+        self.addBtn.layer.shadowOffset = CGSize(width: 0, height: 15)
+        self.addBtn.layer.shadowRadius = 5
     }
     
     func updateUI(){
