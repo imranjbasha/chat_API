@@ -262,15 +262,16 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     func showDeleteAlert(message: Message){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let deleteForMe = UIAlertAction(title: "Delete for me", style: .destructive) { (action) in
+        let deleteForMe = UIAlertAction(title: "Delete just for me", style: .destructive) { (action) in
             self.deleteMessage(message: message, shouldDeleteForBoth: false)
         }
         
-        let deleteForAll = UIAlertAction(title: "Delete for all", style: .destructive) { (action) in
+        let deleteForAll = UIAlertAction(title: "Delete for me and \(userName.text ?? "this user")", style: .destructive) { (action) in
             self.deleteMessage(message: message, shouldDeleteForBoth: true)
         }
 
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.title = "Are you sure you want to delete the message with \(userName.text ?? "this user") ?"
         alertController.addAction(deleteForMe)
         alertController.addAction(deleteForAll)
         alertController.addAction(cancel)
@@ -279,15 +280,16 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     
     func showClearAllAlert(){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let deleteForMe = UIAlertAction(title: "Clear for me", style: .destructive) { (action) in
+        let deleteForMe = UIAlertAction(title: "Delete just for me", style: .destructive) { (action) in
             self.clearAll(shouldDeleteForBoth: false)
         }
         
-        let deleteForAll = UIAlertAction(title: "Clear for all", style: .destructive) { (action) in
+        let deleteForAll = UIAlertAction(title: "Delete for me and \(userName.text ?? "this user")", style: .destructive) { (action) in
             self.clearAll(shouldDeleteForBoth: true)
         }
 
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.title = "Are you sure you want to delete the chat with \(userName.text ?? "this user") ?"
         alertController.addAction(deleteForMe)
         alertController.addAction(deleteForAll)
         alertController.addAction(cancel)

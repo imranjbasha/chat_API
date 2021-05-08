@@ -96,15 +96,19 @@ class FriendsListVC: UIViewController {
     
     func showClearAllAlert(friend: Friend){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let deleteForMe = UIAlertAction(title: "Clear for me", style: .destructive) { (action) in
+        let deleteForMe = UIAlertAction(title: "Delete just for me", style: .destructive) { (action) in
             self.clearAll(shouldDeleteForBoth: false, friend: friend)
         }
-        
-        let deleteForAll = UIAlertAction(title: "Clear for all", style: .destructive) { (action) in
+        var userName: String = "this user"
+        if let firstName = friend.firstName, let lastName = friend.lastName  {
+            userName = "\(firstName) \(lastName)"
+        }
+        let deleteForAll = UIAlertAction(title: "Delete for me and \(userName)", style: .destructive) { (action) in
             self.clearAll(shouldDeleteForBoth: true, friend: friend)
         }
 
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.title = "Are you sure you want to delete the chat with \(userName) ?"
         alertController.addAction(deleteForMe)
         alertController.addAction(deleteForAll)
         alertController.addAction(cancel)
