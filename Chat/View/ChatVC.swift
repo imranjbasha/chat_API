@@ -51,6 +51,8 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     var friendsVC :FriendsListVC?
 
     var attatchments: [Media] = []
+    
+    var isKeypadHidden: Bool = true
 
     @IBOutlet weak var tfChat: UITextField!
     
@@ -322,6 +324,11 @@ class ChatVC: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc func dismissKeyboard() {
+        if bottomConstraint.constant > 10 {
+            isKeypadHidden = false
+        }else {
+            isKeypadHidden = true
+        }
         view.endEditing(true)
     }
     
@@ -480,6 +487,7 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isKeypadHidden {
         let messageData = messages[indexPath.item]
         let images = messageData.attachments
         if (messageData.type == "media" || messageData.type == "document") && images.count == 1 {
@@ -495,6 +503,7 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
             let mediaVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MediaVC") as! MediaVC
             mediaVC.mediasUrlString = images
             present(mediaVC, animated: true, completion: nil)
+            }
         }
     }
     
